@@ -1,0 +1,4 @@
+{
+  "what": "Folders pulled from this hub. A vault refuses to install anything listed here, by folder name and content hash. Installed copies belong to the person who installed them and are not touched.",
+  "removed": []
+}
