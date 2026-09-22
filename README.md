@@ -18,9 +18,17 @@ Each folder has its own README with the folder contract. A folder is the unit th
 - Bump the version in the frontmatter on every change to any file in the folder.
 - No script reaches the network unless the folder says so and why.
 
+## Contact and removal
+
+- Something in a folder is wrong or unwelcome: **contact@oneiron.dev**.
+- A vendor or an author wants a folder removed: **legal@oneiron.dev**. We remove a listing on a vendor's or author's request, usually within a day. Installed copies belong to the person who installed them.
+- A vulnerability: **security@oneiron.dev**, see [SECURITY.md](SECURITY.md).
+
+A pulled folder goes on [removed.json](removed.json) by name and content hash, and a vault refuses to install it from then on.
+
 ## Status
 
-Empty for now. The first folders land with the engine's hub import path.
+The first folders are manifests for the seat packs (`packs/claude-seat`, `packs/codex-seat`) and the skill that guides a person through connecting one (`skills/connect-a-seat`). They become installable when the engine's seat row and headless seat adapter ship.
 
 ## License
 
