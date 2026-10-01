@@ -44,7 +44,7 @@ Patterns differ by who makes the final call. Whether the team converges on one a
 
 | pattern | who decides | use it when |
 |---|---|---|
-| CEO | the lead alone, after advice | most work; the default above solo |
+| CEO | the lead alone, after advice | most work. A solo plan is CEO at width one: the one agent decides. |
 | committee | a chair, after the members deliberate | refining one artifact; hard problems with one right answer |
 | vote | a count of independent ballots | discrete answers; debate only on request |
 | market | a referee rule signed before the work | many candidates and a fair check: tests, a holdout, a pinned judge |
@@ -74,7 +74,7 @@ Two modifiers move the seed:
 
 - Width comes from the payoff numbers and the budget. There is no fixed rule.
 - Small teams find new ideas. Large teams extend known lines.
-- Fit the best shape the budget allows. Never refuse for budget. Add one line on what more budget would buy.
+- Fit the best shape the budget allows. A small budget shapes the plan; it is not a reason to decline the spawn. Add one line on what more budget would buy.
 - A large fan-out shows its estimate and asks first.
 - When the budget runs low mid-run, seats get a wrap-up warning, and the run stops gracefully with partial results and a notice. It can resume.
 
@@ -95,7 +95,7 @@ Two modifiers move the seed:
 
 ## The receipt
 
-Write one line on why. Name the type, the row you read (or "seed" when empty), the pattern, the width, the models, and what more budget would buy.
+Write one line on why. Give the `typeRef` (node id and tree version), the row you read (or "seed" when empty), the pattern, the width, the models, and what more budget would buy.
 
 ## You slip here
 
@@ -104,7 +104,7 @@ Write one line on why. Name the type, the row you read (or "seed" when empty), t
 - An assigned devil's advocate as the only dissent.
 - Parallel writers on one artifact.
 - Overriding a field the caller pinned.
-- Refusing for budget instead of fitting a smaller shape.
+- Declining a spawn over budget instead of fitting a smaller shape.
 - Following this page over a payoff row with real runs.
 
 ## The tree
