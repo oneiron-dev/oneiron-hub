@@ -18,6 +18,15 @@ Rules:
 - No script reaches the network unless the body says so and why.
 - A version bump on every change to any file in the folder.
 
+## Domain skills
+
+A domain skill is a fork of a general skill, seeded for a domain whose priors differ. Security bounty work is an example: its best team shapes differ from general coding, so it starts from a seeded fork of `team-shape` instead of learning from zero.
+
+- The fork keeps the parent's structure and changes the seeds: its seed rows, its own type nodes, its notes.
+- The fork remembers its parent. The engine records the lineage.
+- A vault uses the general skill until a project's receipts diverge, then forks. A known-different domain gets the seeded fork at birth.
+- A fork's wins promote back to the parent through the merge-back: the question "useful upstream?", then a held-out test.
+
 ## Related libraries
 
 Places a vault may also import from, each at a pinned ref. Trust never chains from one to another.

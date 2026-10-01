@@ -30,6 +30,8 @@ A pulled folder goes on [removed.json](removed.json) by name and content hash, a
 
 The first folders are manifests for the seat packs (`packs/claude-seat`, `packs/codex-seat`) and the skill that guides a person through connecting one (`skills/connect-a-seat`). They become installable when the engine's seat row and headless seat adapter ship.
 
+`skills/team-shape` teaches the planner how to organise agents for a spawn, seeded from the cooperation research. It goes live with the engine's planner ladder.
+
 ## License
 
 Apache-2.0, the same as the engine.
