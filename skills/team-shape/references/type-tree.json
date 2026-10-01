@@ -1,0 +1,18 @@
+{
+  "tree_version": 1,
+  "about": "Seed task-type tree for the team-shape skill (ONEIRON-ARCH-0079, ONE TASK TYPE). Every spawn and task receipt carries a typeRef: a node id and this tree_version. The Dreamer splits a node when its tasks disagree on a decision read from the tree, merges siblings that agree, and names each new node. Nodes split on decisions, never on topic.",
+  "modifiers": {
+    "uncertainty": "high or low. High favours more makers and contests.",
+    "solo_baseline": "above or below about 45%. Above it, extra agents tend to hurt."
+  },
+  "nodes": [
+    { "id": "root", "parent": null, "name": "all tasks", "test": "Any task. A task the placement skill cannot place with confidence stays here." },
+    { "id": "generate", "parent": "root", "name": "GENERATE", "test": "Many options are needed; the best one matters; no checker yet." },
+    { "id": "refine", "parent": "root", "name": "REFINE", "test": "Improve an existing artifact or extend existing work." },
+    { "id": "solve", "parent": "root", "name": "SOLVE", "test": "One right answer, and a check can confirm it." },
+    { "id": "research", "parent": "root", "name": "RESEARCH", "test": "The facts are spread across many sources." },
+    { "id": "judge", "parent": "root", "name": "JUDGE", "test": "No check now; the truth arrives later or is a judgment." },
+    { "id": "build", "parent": "root", "name": "BUILD", "test": "One coherent artifact with chained constraints." },
+    { "id": "negotiate", "parent": "root", "name": "NEGOTIATE", "test": "Goals or views conflict, and one must be chosen." }
+  ]
+}
