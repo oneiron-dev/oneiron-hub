@@ -43,7 +43,7 @@ At light, retrieval makes no model call and takes no lease. High and up add `exp
 | detection window | `crates/oneiron-retrieval/src/analyzer/detect.rs:19` | 512 bytes | — | — | engine |
 | phonetic score | `ports/lmdb_phonetic.rs:51-53` | +1 per matched code; ×1.2 at 2 or more | codes come from the caller | — | caller |
 
-The weights and b are scoring-only: a `Bm25RankProfile` per query changes them with no reindex (`config.rs:427`). A dictionary changes the index itself. Flipping a language between portable and morphological mode on a non-empty index fails closed until `clear_text_index` rebuilds it (ARCH-0031).
+The weights and b are scoring-only: a `Bm25RankProfile` per query changes them with no reindex (`config.rs:427`). A dictionary changes the index itself. Flipping a language between portable and morphological mode on a non-empty index fails closed. The host then runs `clear_text_index`, which clears the old postings and rewrites the analyzer manifest, and reruns its indexing pipeline to rebuild the index (`maintain/builder.rs:178-185`).
 
 ## Vectors (HNSW)
 
@@ -55,7 +55,7 @@ The weights and b are scoring-only: a `Bm25RankProfile` per query changes them w
 | dimensions | `config.rs:283` | 1024 device, 4096 server | pinned with the model | — | host |
 | query embedding | `retrieval_depth/controls.rs:47-53` | none unless the host passes one | — | pass one whenever the vault has an embedder | host |
 
-Distance is cosine (`crates/oneiron-retrieval/src/distance.rs:18-26`). The defaults already sit at the high-recall end. Under about 100K vectors, exact search is nearly as fast and gives the recall oracle. Check recall@10 against brute force with `oneiron-bench vector` before and after any change.
+Distance is cosine (`crates/oneiron-retrieval/src/distance.rs:18-26`). The defaults already sit at the high-recall end. Exact search is the recall oracle. One Lucene study saw negligible speed differences below 100K documents ([sources.md](sources.md)); measure the crossover on this vault's dimensions, filters and hardware. `oneiron-bench vector` checks recall@10 on a synthetic vault with fixed settings, so it cannot compare a candidate setting (NOTES.md).
 
 ## Fusion and blend
 
@@ -63,27 +63,28 @@ Distance is cosine (`crates/oneiron-retrieval/src/distance.rs:18-26`). The defau
 |---|---|---|---|---|---|
 | channel fusion | `crates/oneiron-retrieval/src/fusion.rs:70-113` | each channel's list is z-scored; a candidate missing from a list gets that list's lowest z; the sum is relevance | a list with one hit or no variance contributes zeros (`fusion.rs:309-328`) | — | skill (formula, Tier 2) |
 | relevance log weight | `crates/oneiron-retrieval/src/fusion.rs:38` | 1.0 | fixed | — | skill |
-| blend weights | `crates/oneiron-contracts/src/retrieval_telemetry.rs:60-76` | recency 0.35, salience 0.30, confidence 0.20, gravity 0.15 | each finite and ≥ 0; positive sum; used as stored | — | learner |
+| blend weights | `crates/oneiron-contracts/src/retrieval_telemetry.rs:60-76` | recency 0.35, salience 0.30, confidence 0.20, gravity 0.15 | each finite and ≥ 0; positive sum; normalized to sum to one on read (`store/retrieval_telemetry/blend_tuning.rs:212-220`) | — | learner |
 | tuner settings | `store/retrieval_telemetry/types.rs:127-141` | 1024 runs, learning rate 0.05, 1 reward minimum | positive values | learning rate 0.01 to 0.1; reward minimum 30 or more | host today; skill by design |
 | recency half-life by entity type | `pipeline/types.rs:69-99` | claim, turn, session and message 28 days; person 365; relationship, place, org 180; event 30; skill and summary 90; notification 7 | unknown types fall back to 28 | ×0.5 to ×2 for one type per proposal | skill; compiled |
 | claim access decay by class | `claim/decay.rs:26-35` | durable 365 days, standard 90, ephemeral 14; floor 0.05; superseded, retracted or expired claims 0 | caller overrides in [0, 1] for live claims only | — | skill; compiled |
 | contiguity boost | `pipeline/blend.rs:344` | 1 + 0.2 × contiguity, when the caller turns it on | — | — | skill |
 | ghost-vector threshold | `pipeline/types.rs:121` | 0.3 cosine | — | re-derive per embedder | skill |
 
-The blend works in log space: relevance plus each weight times its z-scored signal, then exp (`crates/oneiron-retrieval/src/fusion.rs:145-172`). The read-side access factor multiplies after that. The trace's `fused` stage shows a reciprocal-rank order with k = 60 for display only (`pipeline/types.rs:56`).
+The blend works in log space. It z-scores the summed channel relevance again across the candidate pool, adds it at weight 1.0 to each blend weight times its z-scored signal, then applies exp (`crates/oneiron-retrieval/src/fusion.rs:145-172, 259-265`). The read-side access factor multiplies after that. The trace's `fused` stage shows a reciprocal-rank order with k = 60 for display only (`pipeline/types.rs:56`).
 
 ## Graph (PPR)
 
 | knob | code | default | in code | try | who |
 |---|---|---|---|---|---|
 | damping (teleport) | `pipeline/types.rs:117` | 0.15 | also a literal 0.15 at `ppr_community/bridge.rs:33` | 0.10 to 0.30 | skill; compiled |
-| λ budget per edge kind | `ppr/policy.rs:84-118` | belongs_to, claim_of, supports, participates_in 1.0; authored_by 0.9; part_of, attached 0.8; scoped_to 0.7; mentions 0.6; about 0.5; supersedes, merged_into, split_into 0.3; derived_from 0.2; employed_by 0.1; facet and world kinds 0.05 | — | ×0.5 to ×1.5 for one kind per proposal | skill; compiled, and pinned to the docs contract table |
+| λ budget per edge kind, legacy priors | `ppr/policy.rs:84-118` | belongs_to, claim_of, supports, participates_in 1.0; authored_by 0.9; part_of, attached 0.8; scoped_to 0.7; mentions 0.6; about 0.5; supersedes, merged_into, split_into 0.3; derived_from 0.2 | — | ×0.5 to ×1.5 for one kind per proposal | skill; compiled, and pinned to the docs contract table |
+| λ budget, world-model kinds | `ppr/policy.rs:79-83, 110-114` | employed_by 0.10; has_facet, facet_of, in_world, set_in 0.05 | pinned by ARCH-0039 | — | wall; only an owner proposal to the contract changes them |
 | opposes λ; untraversed kinds | `ppr/policy.rs:84-130` | opposes 0; child_of, assigned_to, blocked_by, same_as and others not traversed | — | — | wall |
 | part_of hop cap | `ppr/walk.rs:531-540` | 2 | — | — | skill |
 | seed weights | `ppr/policy.rs:36-46` | search_ppr: 1/ln(1 + max(mentions, 1)); expand_ppr: uniform | — | — | skill |
-| VAD alpha | `config.rs:273-275` | 0 | 0 to 0.4; nonzero needs the BEAM gate | — | host |
+| VAD alpha | `config.rs:273-275` | 0 | finite, 0 to 0.4 (`config.rs:27-35`); nothing checks a BEAM result at run time | — | host; a nonzero value needs the pinned BEAM recall and latency gate first |
 | community prior | `ppr_community/types.rs:13-23` | beta 0 (experiment 0.2); gamma 1.0; multiplier cap 1.5 | bounds cannot be relaxed | — | host |
-| cache TTL | `ppr/cache_store.rs:29-36` | 24 h if a seed was active under 7 days ago; 72 h under 30 days; 168 h after | — | — | engine |
+| cache TTL | `ppr/cache_store.rs:29-36, 53-69` | 24 h when the newest seed's `learned_at` is under 7 days old; 72 h at 7 to 30 days; 168 h after; 24 h when no seed has a usable timestamp | — | — | engine |
 
 The cache key holds the damping, VAD alpha and formula version. A change to any of them makes every cached walk miss once. Warm the cache before you measure latency.
 
@@ -115,7 +116,7 @@ A window the host passes turns off the separate recency blend. The effort's own 
 
 | rule | code | default | who |
 |---|---|---|---|
-| anomalous query text | `pipeline/budget.rs:230-255` | a control character, or one character repeated 32 times | wall |
+| anomalous query text | `pipeline/budget.rs:227-255` | a control character other than newline, carriage return or tab; or one non-whitespace character repeated 32 times in a row | wall |
 | dual-weak | `pipeline/budget.rs:216-224` | a text and a vector query were both sent, no keyword hit survived, and every vector score is under 0.3 | floor |
 | poor gap | `pipeline/budget.rs:260-277` | two or more vector scores, top under 0.5, and (top1 − top2) / top1 under 0.1 | floor |
 
@@ -136,6 +137,6 @@ An abstaining pack returns `BelowThreshold` (`pipeline/execution/channels/mod.rs
 3. Fusion fills a candidate's missing channels with that channel's lowest z. A channel with many weak hits shifts everyone's relevance; a channel with one hit adds nothing.
 4. The blend reorders only the fused pool. Channel limits bound the pool. The result limit cuts after the post-blend scope filters.
 5. Two age systems apply: the blend's recency half-life by entity type, and the read-side access decay by claim class. Shorten one without checking the other and age counts twice.
-6. `expand_ppr` takes extra seeds from the first relevance-only ranking. A fusion change also moves graph expansion.
-7. A HyDE retry doubles channel limits and skips abstention for that retry. Count retries before reading latency.
+6. `expand_ppr` takes extra seeds from a preliminary full blend. Recency, salience, confidence and gravity shape that ranking; only the read-side access decay waits (`pipeline/execution/channels/mod.rs:407-456`). Fusion and blend changes both move graph expansion.
+7. A HyDE retry widens channel limits to max(limit, min(2 × limit, 200)) and skips abstention for that retry. Count retries before reading latency.
 8. Changing damping or VAD alpha empties the PPR cache's usefulness once. Measure latency warm.

@@ -26,10 +26,10 @@ For Oneiron: k1 is pinned at 1.2. Memories are short and similar in length, so b
 - M sets graph links, efConstruction build quality, and ef search-time recall; there is a trade-off, not an optimum. Malkov and Yashunin, 2018. https://arxiv.org/abs/1603.09320
 - hnswlib calls M = 12 to 48 fine for most uses, and 48 to 64 for high recall on high-dimensional data. https://github.com/nmslib/hnswlib/blob/master/ALGO_PARAMS.md
 - pgvector defaults to m = 16, ef_construction = 64 and ef_search = 40; a higher ef_search raises recall and costs speed. https://github.com/pgvector/pgvector
-- Below 100K documents, flat (exact) search and HNSW differed negligibly on BEIR with Lucene, and exact search is the recall oracle for ANN. Lin et al., ACL 2025 Industry. https://aclanthology.org/2025.acl-industry.61/
+- In one Lucene throughput study on BEIR, flat (exact) and HNSW indexes differed negligibly below 100K documents, under that study's settings and hardware. Exact search is also the recall oracle for ANN. Lin, ACL 2025 Industry. https://aclanthology.org/2025.acl-industry.61/
 - Filters can cut ANN recall; measure filtered and unfiltered recall apart. Qdrant, 2023. https://qdrant.tech/benchmarks/filtered-search-intro/
 
-For Oneiron: the engine's defaults (m_max_0 64, ef_construction 200, ef_search 128) already sit at the high-recall end. Tune ef_search first, because it is search-time only. Check recall@10 against brute force with `oneiron-bench vector` before and after. Several scope filters run after the blend, so filtered recall is the number that matters.
+For Oneiron: the engine's defaults (m_max_0 64, ef_construction 200, ef_search 128) already sit at the high-recall end. Tune ef_search first, because it is search-time only. Compare incumbent and candidate settings against brute force on the same corpus and queries; the stock `oneiron-bench vector` run pins its own settings. Several scope filters run after the blend, so filtered recall is the number that matters.
 
 ## Japanese and other CJK text
 
@@ -49,13 +49,13 @@ For Oneiron: set a floor from labelled answerable and unanswerable queries, at a
 
 ## Judging a change from logs
 
-- Replay evaluation keeps the logged events where the new policy picks the logged arm. It is unbiased only when the logger randomized uniformly. Li, Chu, Langford and Wang, WSDM 2011. https://arxiv.org/abs/1003.5956
+- Replay evaluation keeps the logged events where the new policy picks the logged arm. The simple match-only replay is unbiased when the logger picked arms uniformly at random. A known non-uniform random logger needs a rejection-sampling or propensity correction, and the evaluated actions must have been possible. Li, Chu, Langford and Wang, WSDM 2011. https://arxiv.org/abs/1003.5956
 - Inverse propensity and doubly robust estimators need the logged probability of each action; doubly robust usually has lower variance. Wang, Agarwal and Dudík, ICML 2017. https://proceedings.mlr.press/v70/wang17a/wang17a.pdf
 - Thompson sampling is competitive with UCB and a sound default. Chapelle and Li, NeurIPS 2011. https://proceedings.neurips.cc/paper/2011/file/e53a0a2978c28872a4505bdb51db06dc-Paper.pdf
 - Linear Thompson sampling has a near-optimal regret bound. Agrawal and Goyal, ICML 2013. https://proceedings.mlr.press/v28/agrawal13.pdf
 - Interleaving and multileaving compare rankers with less data than A/B tests. Schuth et al., CIKM 2014. https://anneschuth.nl/assets/schuthcikm14.pdf
 
-For Oneiron: once the bandit runs, it should log each run's action probability, or later replay of a new arm set is biased. When arms change, carry a prior only where the arm's meaning and the reward's scale did not change. The prior-carry rule is engineering judgment, not a theorem.
+For Oneiron: once the bandit runs, it should log each run's action probability. Without it, replay of a new arm set cannot be corrected for the bandit's own choices. When arms change, carry a prior only where the arm's meaning and the reward's scale did not change. The prior-carry rule is engineering judgment, not a theorem.
 
 ## Machines tuning databases
 

@@ -71,7 +71,7 @@ Bench commands (`crates/oneiron-bench`):
 reward = gate_score × hit − cost_weight × (elapsed_us / latency_scale_us + hops)
 ```
 
-A raw outcome can never replace a gated one. Keys are 1 to 128 characters: ASCII letters, digits, `.`, `_`, `-` and `:`. A gated outcome credits only the run it names. Splitting one turn's credit across its runs is not built.
+A raw outcome can never replace a gated one. Keys are 1 to 128 characters: ASCII letters, digits, `.`, `_`, `-` and `:`. A gated outcome credits only the run it names. Splitting one turn's credit across its runs is not built. The door cannot label an empty run or a memory the run missed.
 
 ## The trace
 
@@ -89,13 +89,13 @@ A raw outcome can never replace a gated one. Keys are 1 to 128 characters: ASCII
 
 | reading | how | watch for |
 |---|---|---|
-| capture health | runs per day; the share with `replay_inputs`; the share with a trace | no rows means capture is off |
+| capture health | runs per day; the share with `replay_inputs`; the share with a trace | no rows: capture is off, no retrieval ran, or a write failure turned writes off |
 | empty rate | runs with `empty_reason` or no `result_ids`, over all runs; group by `empty_reason` | a jump after an embedder swap |
 | channel coverage | the share of runs with each signal in `signals` | Vector near 0% means no query embedding |
 | latency | p50 and p95 of `elapsed_us`, by `action` and by effort; read the effort from `replay_inputs.config` (PPR steps, rerank top n) | compare on one machine only |
 | reward coverage | the share of runs with a gated outcome; gated outcomes per slice | below the seeds on the main page, do not tune |
 | reward | mean shaped reward per slice; the spread of `gate_score`; the hit rate | one evaluator in the metadata is one judge |
-| rank of hits | the rank of the activated memory among `result_ids`, for gated hits | low ranks point at ordering; absent hits point at a channel |
-| false abstention | an empty run in a turn where another run's gated outcome confirmed a fact | |
+| rank of hits | the rank of the activated memory among `result_ids`, for gated hits | a gated outcome always names a surfaced memory, so this shows ordering only; a memory the run never surfaced needs a label for that query and scope |
+| possible false abstention | an empty run in a turn where another run's gated outcome confirmed a fact | triage only: the runs may ask different things; confirm with a label for the same query and scope |
 | learner health | the blend table's data window and the age of `tuned_at` | `tuned_at` 0 means the tuner never ran |
 | slices by language or intent | runs are query-free. Join the turn's message text through `turn` or `replay_inputs.query_ref`, only where the Grant allows, and detect the script there. Never copy that text into a proposal. | `intent_class` is 0 today |
