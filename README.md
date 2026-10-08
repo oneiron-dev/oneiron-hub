@@ -32,6 +32,8 @@ The first folders are manifests for the seat packs (`packs/claude-seat`, `packs/
 
 `skills/team-shape` teaches the planner how to organise agents for a spawn, seeded from the cooperation research. It goes live with the engine's planner ladder.
 
+`skills/tune-oneiron-retrieval` is what the slow retrieval loop reads at sleep: the knobs, how to read the retrieval receipts, how to judge a change on held-out runs, and what it must never touch. Its `NOTES.md` lists the engine work it waits on.
+
 ## License
 
 Apache-2.0, the same as the engine.
