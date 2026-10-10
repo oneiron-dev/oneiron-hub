@@ -1,18 +1,13 @@
 ---
-name: codex-seat
-description: A person's own Codex, signed in with their ChatGPT account, run headless inside their vault as a seat. Installs OpenAI's tool at first use. Identifies itself as Oneiron.
-version: 0.1.0
+name: oneiron.codex-seat
+description: "A person's own Codex, signed in with their ChatGPT account, run headless inside their vault as a seat. Installs OpenAI's tool at first use. Identifies itself as Oneiron."
+version: 0.1.1
 license: Apache-2.0
 kind: capability
-grants:
-  - run: the codex binary and its app-server inside this vault's sandbox, as the seat's own user
-  - network: chatgpt.com and api.openai.com, for the device login and the tool's own requests
-  - store: the seat's Codex home on the vault volume, read and written only by the seat process
+grants: ["run: the codex binary and its app-server inside this vault's sandbox, as the seat's own user", "network: chatgpt.com and api.openai.com, for the device login and the tool's own requests", "store: the seat's Codex home on the vault volume, read and written only by the seat process"]
 wakes: []
 adapter: built-in:seat-headless
-contact: legal@oneiron.dev for removal requests, contact@oneiron.dev for everything else
-terms: your login, your plan, OpenAI's terms apply
-ship_order: ships first, with the connector shape
+contact: "legal@oneiron.dev for removal requests, contact@oneiron.dev for everything else"
 ---
 
 # codex-seat
@@ -32,6 +27,11 @@ This pack turns a person's own ChatGPT subscription into a seat their vault can 
 ## Permissions the card asks for
 
 Under "Asks for permission": run codex in this vault; reach chatgpt.com and api.openai.com; keep a login store on this vault's volume. The person's tap is the standing grant.
+
+## Terms and ship order
+
+- **Terms.** Your login, your plan. OpenAI's terms apply.
+- **Ship order.** Ships first, with the connector shape.
 
 ## Requires
 

@@ -1,13 +1,13 @@
 ---
 name: connect-a-seat
 description: Walk a person through connecting their own Claude or ChatGPT subscription to their vault as a seat, without a terminal, without a token ever leaving the vendor's own tool.
-version: 0.1.0
+version: 0.1.1
 license: Apache-2.0
 metadata:
   author: oneiron-dev
   contact: contact@oneiron.dev
   terms: your login, your plan, the vendor's terms apply
-  requires: the engine's seat row and the claude-seat or codex-seat pack
+  requires: the engine's seat row and the oneiron.claude-seat or oneiron.codex-seat pack
 ---
 
 # Connect a seat

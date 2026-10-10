@@ -1,19 +1,13 @@
 ---
-name: claude-seat
-description: A person's own Claude Code, signed in by them, run headless inside their vault as a seat. Installs Anthropic's tool from Anthropic's source at first use. Never holds a token.
-version: 0.1.0
+name: oneiron.claude-seat
+description: "A person's own Claude Code, signed in by them, run headless inside their vault as a seat. Installs Anthropic's tool from Anthropic's source at first use. Never holds a token."
+version: 0.1.1
 license: Apache-2.0
 kind: capability
-grants:
-  - run: the claude binary inside this vault's sandbox, as the seat's own user
-  - network: api.anthropic.com and claude.ai, for the login flow and the tool's own requests
-  - store: the seat's login directory on the vault volume, read and written only by the seat process
+grants: ["run: the claude binary inside this vault's sandbox, as the seat's own user", "network: api.anthropic.com and claude.ai, for the login flow and the tool's own requests", "store: the seat's login directory on the vault volume, read and written only by the seat process"]
 wakes: []
 adapter: built-in:seat-headless
-contact: legal@oneiron.dev for removal requests, contact@oneiron.dev for everything else
-terms: your login, your plan, Anthropic's terms apply
-metering_note: headless use meters about 1.7x the interactive terminal per list dollar (Hermes plugin measurement, Pro plan, 2026-09-09); Oneiron's own bench replaces this number when it exists
-ship_order: opt-in; never the cloud default
+contact: "legal@oneiron.dev for removal requests, contact@oneiron.dev for everything else"
 ---
 
 # claude-seat
@@ -39,6 +33,12 @@ Under "Asks for permission": run the claude binary in this vault; reach api.anth
 ## When a vendor moves
 
 If Anthropic changes what a subscription may do headless, this pack is archived and the connector shape carries on: the person's own Claude Code attached to the vault over MCP, work pushed through a channel, state read through hooks. Nothing in the engine changes.
+
+## Terms and ship order
+
+- **Terms.** Your login, your plan. Anthropic's terms apply.
+- **Metering.** Headless use meters about 1.7x the interactive terminal per list dollar (Hermes plugin measurement, Pro plan, 2026-09-09). Oneiron's own bench replaces this number when it exists.
+- **Ship order.** Opt-in. Never the cloud default.
 
 ## Requires
 
