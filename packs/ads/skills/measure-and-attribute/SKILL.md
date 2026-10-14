@@ -8,7 +8,7 @@ metadata:
   contact: contact@oneiron.dev
   kind: workflow
   pack: oneiron.ads
-  reads: per-creative performance claims, backend conversion claims, the campaign brief's metric definitions, knowledge/stale-registry.md
+  reads: the platform report claims the host's connectors write, backend conversion claims, the campaign brief's metric definitions, knowledge/stale-registry.md
   data: references/true-cac.md
 ---
 
@@ -40,7 +40,7 @@ Check each against first-party data before trusting a platform's count:
 - An automated campaign claiming brand or returning demand. If the account claims an enormous return, ask why the bank does not show it. Demand a holdout.
 - A "new customer" flag that does not exclude existing customers. Validate with your own list, and compare returning-to-new before and after switching it on.
 
-Analytics "direct" traffic is unattributable, not proven direct. Data-driven attribution is not incrementality (Google states this, `knowledge/platform-facts.md`). Never quote one "attribution is X% accurate" figure. The numbers people quote describe different things: an untracked baseline, a platform's self-report, a first-party edge tag. Platform self-report is the least trustworthy of the three.
+Analytics "direct" traffic is unattributable, not proven direct. An attribution model is not an incrementality measurement; the platform documents them as different tools (`knowledge/platform-facts.md`). Never quote one "attribution is X% accurate" figure. The numbers people quote describe different things: an untracked baseline, a platform's self-report, a first-party edge tag. Platform self-report is the least trustworthy of the three.
 
 ### 2. Compare two reports field by field
 
@@ -96,7 +96,7 @@ Bid toward the action furthest down the funnel that you can track reliably and t
 
 Platform cost per action is a half-truth whenever the optimised event (a signup, a lead, a trial) is not the event that makes money. The lowest-cost creative is routinely the one bringing the worst leads. Compute both spend per signup and spend per qualified lead, show them side by side, and never make a kill or scale call on platform cost alone.
 
-First decide how ad-side rows join to product-side outcomes, then check how much spend the join covers, then split cohorts by maturity. The three join patterns, the coverage gates and the maturity split are in `references/true-cac.md`.
+First decide how ad-side rows join to product-side outcomes, then check how much spend the join covers, then split cohorts by maturity. The three join patterns, the three coverage modes (the owner sets the cut-offs) and the maturity split are in `references/true-cac.md`.
 
 ### 8. Judge three cold-start histories apart
 

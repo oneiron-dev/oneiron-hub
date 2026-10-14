@@ -16,17 +16,17 @@ The crm pack's intake records the submission before any lookup; this join reads 
 
 ## 2. Gate on coverage before you analyse
 
-Pull a sample of recent signups and check what share carry a resolvable key back to a specific ad. The pack's default gates (set your own):
+Pull a sample of recent signups and check what share carry a resolvable key back to a specific ad. The owner sets two cut-offs in the brief, each written "assume ~X (validate)": the share above which the join is trusted, and the share below which it is not worth analysing. Three modes follow:
 
-- About 80% or more joinable: analyse normally.
-- Between about 50% and 80%: analyse, and caveat every finding with the coverage figure.
-- Under about 50%: stop analysing. Switch to tracking-gap mode. Output three things. What is broken: "signups carry no ad tag; the form's hidden fields are empty". The specific fix: preserve URL parameters on submit, add tag columns to the leads table, wire the send-back. A five-minute verification: open a tagged URL, complete a signup, query the database, confirm the fields populated. Re-run once real volume accrues.
+- Above the upper cut-off: analyse normally.
+- Between the two: analyse, and caveat every finding with the coverage figure.
+- Below the lower cut-off: stop analysing. Switch to tracking-gap mode. Output three things. What is broken: "signups carry no ad tag; the form's hidden fields are empty". The specific fix: preserve URL parameters on submit, add tag columns to the leads table, wire the send-back. A quick verification: open a tagged URL, complete a signup, query the database, confirm the fields populated. Re-run once real volume accrues.
 
-A true-CAC figure computed on thin coverage is fabrication with extra steps.
+If the brief sets no cut-offs, report the coverage figure on every row and make no kill or scale call from the join. A true-CAC figure computed on thin coverage is fabrication with extra steps.
 
 ## 3. Split cohorts by maturity before any call
 
-A signup cannot have qualified if it is younger than your qualification window. Set the window to your own lag: first purchase, activation, trial to paid, first paid task. Two weeks is a common default; measure yours.
+A signup cannot have qualified if it is younger than your qualification window. Set the window to your own measured lag: first purchase, activation, trial to paid, first paid task. Until it is measured, write it "assume ~X (validate)"; never borrow one.
 
 Report two views and never blur them:
 

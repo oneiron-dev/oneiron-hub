@@ -8,7 +8,7 @@ metadata:
   contact: contact@oneiron.dev
   kind: workflow
   pack: oneiron.ads
-  reads: the campaign brief (buyer, offer, voice guide), the moment bank, per-creative performance claims, knowledge/platform-facts.md
+  reads: the campaign brief (buyer, offer, voice guide), the moment bank, the platform report claims the host's connectors write, knowledge/platform-facts.md
   data: references/hook-menu.md
 ---
 
@@ -34,7 +34,7 @@ Volume comes before reputation. Early on, ship to learn. Once the account has a 
 
 ### 1. Test structure
 
-One concept per ad set, a few hook variants of that concept: same body, different openings, especially different first seconds in image and message. Vary one thing so the read is clean. Testing ad sets stay small; the platform's recommended count is a dated row.
+One concept per ad set, a few hook variants of that concept: same body, different openings, especially different first seconds in image and message. Vary one thing so the read is clean. Testing ad sets stay small enough to exit learning; the platform names too many ads as a cause of learning limited (a dated row).
 
 Never kill at 24 hours. The platform needs days to optimise. Do kill when a few days bring no spend at all. Read at a full week at low volume to clear day-of-week effects; read earlier only when volume is high. Pre-register the kill rule with denominators before launch.
 
@@ -90,7 +90,7 @@ A hook is visual plus text plus voice, never only a spoken line. Build three int
 
 Copy carries most of the hook's weight; the visual stops the scroll; audio moves the least. Build for sound off, then add the sound-on layer. The final check is literally watching the ad muted once: does it still stop the thumb, is the point clear? Never ship a hook that only works with the volume up.
 
-Name the buyer or the problem early for cold traffic. No clever or delayed hooks for strangers; a low-conviction question or a generic callout loses the first seconds. The hook window differs by platform (dated rows); carry them separately.
+Name the buyer or the problem early for cold traffic. No clever or delayed hooks for strangers; a low-conviction question or a generic callout loses the first seconds. Each platform publishes its own hook guidance (dated rows); carry them separately.
 
 Plain beats polished. Audiences have learned to skip produced content. Run a few visually different formats at once (split-screen, listicle, user-style footage); the platform matches each format to its own audience pocket. The narrative structure that keeps winning: a specific panic moment, then relief. A structure that manufactures outrage to bait comments crosses the honesty floor; the tension arc without the bait is fine.
 
@@ -102,7 +102,7 @@ Build the chrome by compositing real interface elements frame by frame, never by
 
 ### 8. Hook testing and the next batch
 
-Produce about four openings on a stable body and let delivery surface the strongest. Read hook and hold rates after the outcome metrics.
+Produce a few openings on a stable body and let delivery surface the strongest. Read hook and hold rates after the outcome metrics.
 
 Refresh cold-audience creative when frequency climbs or click-through drops week over week, after ruling out budget shifts, traffic quality, offer, season and tracking. Do not assume fatigue first.
 

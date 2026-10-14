@@ -4,8 +4,8 @@ description: "Paid and organic acquisition for a vault: pick the channel, run se
 version: 0.1.0
 license: Apache-2.0
 kind: capability
-grants: ["read: this project's campaign briefs, creatives, pages, and the performance and conversion claims the host's connectors write", "write: proposals, verdict notes and per-creative performance claims under the campaign's own actor, in this project", "network: the reporting endpoints of the ad platforms the host connects, read only; every write to a platform rides the dispatch gate as a proposal", "spend: none on its own; a budget change, a new campaign or a creative going live is a proposal the dispatch gate and the owner's standing grants decide"]
-wakes: ["daily: each connected platform's report lands as per-creative performance claims; the skills read them on a seven-day window", "claim: a backend conversion or qualified-lead claim lands; re-derive cost per qualified lead", "surface: a comment or reply lands on a creative; emit the signal the crm pack's intake reads"]
+grants: ["read: this project's campaign briefs, creatives, pages, and the platform report and conversion claims the host's connectors write", "write: proposals and verdict notes under the campaign's own actor, in this project", "network: the reporting endpoints of the ad platforms the host connects, read only; every write to a platform rides the dispatch gate as a proposal", "spend: none on its own; a budget change, a new campaign or a creative going live is a proposal the dispatch gate and the owner's standing grants decide"]
+wakes: ["daily: a connected platform's report claim lands, written by the host's connector; the skills read it on a seven-day window", "claim: a backend conversion or qualified-lead claim lands; re-derive cost per qualified lead", "surface: a comment or reply lands on a creative; emit the signal the crm pack's intake reads"]
 contact: "legal@oneiron.dev for removal requests, contact@oneiron.dev for everything else"
 ---
 
@@ -15,7 +15,7 @@ The ads pack runs the machine that brings strangers in. It assumes the offer is 
 
 ## The unit
 
-An ads campaign works on creatives and placements, not people. A creative carries no consent and no suppression. It carries performance claims: spend, reach, clicks, conversions, each dated, each from a named platform or from backend truth. The campaign brief holds the offer, the buyer, the voice guide, the CAC ceiling and the pre-registered kill and scale lines. The agent reads the brief first, then the skill for the moment of work.
+An ads campaign works on creatives and placements, not people. A creative carries no consent and no suppression. Its performance (spend, reach, clicks, conversions) arrives as dated report claims the host's connectors write, each from a named platform or from backend truth. The campaign brief holds the offer, the buyer, the voice guide, the CAC ceiling and the pre-registered kill and scale lines. The agent reads the brief first, then the skill for the moment of work.
 
 Campaigns chain. A comment on a creative is a surface event. The crm pack's intake reads it as a signal. The ads pack never messages the person; it hands the signal on.
 
@@ -73,4 +73,4 @@ Every AI-made video variant gets the same review end to end before it takes budg
 
 ## Status
 
-Procedural now. The per-creative performance claims, the variant bandit and the ads campaign kind are engine work under OF-376 and are not in this folder. Until they ship, a vault runs the skills over its own notes, claims and proposals, and the host brings the platform connectors.
+Procedural now. Per-creative performance claims, the variant bandit and the ads campaign kind are engine work under OF-376 and are not in this folder; no grant or wake here depends on them. Until they ship, a vault runs the skills over its own notes, proposals and the report claims the host writes, and the host brings the platform connectors.

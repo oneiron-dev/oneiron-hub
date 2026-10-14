@@ -12,7 +12,7 @@ Whatever the surface, framing and presentation decide whether browsers convert. 
 
 One pitch does not transfer. The two that differ most from a generic launch:
 
-- The maker forum wants a builder's framing. Prefix the title as a maker post (a dated row). Write in first person: "I made", "after six months". Put the concrete payoff in the title, because the click decision happens there. Even a non-technical product needs an explicit technical angle or the developer audience ignores it. Titles short, no emoji.
+- The maker forum wants a builder's framing. Prefix the title as a maker post (a dated row). Write in first person: "I made", "after six months". Put the concrete payoff in the title, because the click decision happens there. Even a non-technical product needs an explicit technical angle or the developer audience ignores it. Titles short and plain; the site's guidelines ask for no uppercase or exclamation marks.
 - The discussion community punishes obvious promotion. The post must be useful or interesting on its own. The link goes in the first comment with context, not in the title, and only where the community's rules allow. Join and comment in the niche community before you post. Dwell, don't sell.
 
 ### The founder's first comment
@@ -23,9 +23,9 @@ Then reply live and honestly for the first hours. Early genuine engagement is al
 
 ### The tagline memory test
 
-For a tagline or launch title, write ten options and keep the one you can still recall after 24 hours. Unaided next-day recall is a cheap proxy for stickiness. Keep the reasoning apart from the copy:
+For a tagline or launch title, write many options, sleep on them, and keep the one you can still recall unaided the next day. Next-day recall is a cheap proxy for stickiness. Keep the reasoning apart from the copy:
 
-> PREP: picking a maker-forum title for a receipt-scanning tool. Ten written, the one recalled cold the next morning kept; payoff before the click, no emoji, short.
+> PREP: picking a maker-forum title for a receipt-scanning tool. Many written, the one recalled cold the next morning kept; payoff before the click, plain, short.
 >
 > SEND: `Show HN: Turn a shoebox of receipts into a clean ledger`
 

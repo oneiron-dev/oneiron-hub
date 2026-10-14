@@ -18,7 +18,7 @@ Delivery shifts budget toward wherever the next conversion is cheapest, not wher
 
 An ad set needs a number of optimisation events inside a window after its last significant edit to exit learning (a dated row). While learning, delivery is less stable, cost runs higher, and results are not predictive. Do not judge, and never pause on cost alone, an ad set still in learning.
 
-Edits that reset learning (a dated row): targeting, the optimisation event, large creative changes, bid strategy or amount, budget changes above a threshold. The implication is the load-bearing part: batch your changes, then leave it alone. Daily tinkering keeps resetting the clock, so the ad set never stabilises.
+Edits that reset learning (a dated row): targeting, placement, the optimisation event, creative changes, bid strategy or amount, a pause of a week or more, and budget changes the platform calls significant (it publishes no percentage). The implication is the load-bearing part: batch your changes, then leave it alone. Daily tinkering keeps resetting the clock, so the ad set never stabilises.
 
 "Learning limited" (cannot reach the event count in the window) is a structural problem: budget too low, audience too narrow, or too many ad sets splitting the events. Fix the structure. Do not swap the creative.
 

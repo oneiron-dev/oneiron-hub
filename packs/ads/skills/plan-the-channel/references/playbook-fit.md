@@ -32,7 +32,7 @@ Verdict: each part holds somewhere. Trigger moments make strong copy. Buyer dens
 
 1. Gross-profit ceiling. What a customer is worth after costs, over their life, sets what a channel may cost. A low-price one-off leaves little room for paid ads or selling by hand. Count a back end (upsell, repeat, subscription) only if it is measured.
 2. Declared demand. After the problem appears, do people type it into a search box? Yes: search, SEO and AI answers catch them. No: discovery channels must create the awareness first.
-3. Buyer density. Does the audience you can reach contain buyers at your price? Name the accounts, communities, keywords or lists. Peers and fans are not customers. For a social platform, sample about 50 recent posts in the problem's own words and count the ones written by someone who has the problem. Vendors, commentators and news do not count.
+3. Buyer density. Does the audience you can reach contain buyers at your price? Name the accounts, communities, keywords or lists. Peers and fans are not customers. For a social platform, pull a sample of recent posts in the problem's own words, large enough to count, and count the ones written by someone who has the problem. Vendors, commentators and news do not count.
 4. Decision cost and trust. What does the buyer risk, who else must approve, and what proof or human contact removes the risk? A link and an anonymous page carry an impulse purchase. They do not carry a costly, expert-dependent or committee purchase.
 5. Cycle length. A long decision needs repeated education and a follow-up path. A spike of visitors is not a pipeline.
 6. Show-ability. Can a stranger see the benefit in the native format within seconds? Visible products suit video. Numbers, stories and arguments suit text.

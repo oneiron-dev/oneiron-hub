@@ -8,7 +8,7 @@ metadata:
   contact: contact@oneiron.dev
   kind: workflow
   pack: oneiron.ads
-  reads: the campaign brief, the moment bank, per-post performance claims, knowledge/platform-facts.md, knowledge/stale-registry.md
+  reads: the campaign brief, the moment bank, the post report claims the host writes, knowledge/platform-facts.md, knowledge/stale-registry.md
   data: references/launches-and-carousels.md
 ---
 
@@ -28,7 +28,7 @@ You run the channels that cost time instead of money: a standing short-form engi
 
 A format works only when it clears a view floor you set, earns comments, and drives product traffic. Views with no comments and no clicks are vanity. There is no point finding a format that gets millions of views and brings no revenue.
 
-Do not judge a format search before a large sample. Set the window up front: on the order of a hundred posts across formats is a planning assumption you choose, not a validated minimum. A scheduler can post; it cannot read the results and change the format. That weekly human read is the work.
+Do not judge a format search before a large sample. Set the window up front as a post count across formats, written "assume ~X (validate)"; it is a planning assumption you choose, not a validated minimum. A scheduler can post; it cannot read the results and change the format. That weekly human read is the work.
 
 ## Procedure
 
@@ -43,7 +43,7 @@ Named formats are a menu, not a method. Treat each (a replay-loop clip, a skit, 
 
 ### 2. Text posts on a feed platform
 
-Decide fit first. Pull about fifty recent posts in the problem's own words and count how many come from someone who has the problem, not vendors, commentators or news. Where the buyer is not talking there, the platform is for credibility and peers, not sales. A revenue screenshot posted on the platform is not a sale made by the platform.
+Decide fit first. Pull a sample of recent posts in the problem's own words, large enough to count, and count how many come from someone who has the problem, not vendors, commentators or news. Where the buyer is not talking there, the platform is for credibility and peers, not sales. A revenue screenshot posted on the platform is not a sale made by the platform.
 
 A named person beats a page. The located wins for products and services have a visible person posting and replying. A faceless niche page has no corroborated sales case; run one only as a pre-registered cheap test.
 
@@ -90,12 +90,12 @@ A new account has a cold-start problem: the platform classifies you by what you 
 
 ### 8. Trends
 
-Trends are a timing supplement, not a strategy. Cap trend content at one or two posts a week. Blend the trend into a proven format rather than posting pure trend content, so new viewers land in the catalogue instead of on a one-off. One hit lifts the whole back catalogue on a newer account, which is why consistency matters. Catch it early, adapt fast; the specific windows are perishable.
+Trends are a timing supplement, not a strategy. Keep trend content a small share of the week's posts. Blend the trend into a proven format rather than posting pure trend content, so new viewers land in the catalogue instead of on a one-off. One hit lifts the whole back catalogue on a newer account, which is why consistency matters. Catch it early, adapt fast; the specific windows are perishable.
 
 ## Anti-patterns
 
 - Judging on views alone.
-- Killing a format search after a dozen posts.
+- Killing a format search after a handful of posts.
 - Set-and-forget scheduling with no weekly read.
 - Unofficial automation or automated replies on the feed platform.
 - Choosing a platform because the founder is there, not the buyer.

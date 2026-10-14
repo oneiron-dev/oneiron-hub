@@ -78,7 +78,7 @@ Interface copy is design: customer words, as few as the task allows, real data i
 
 ### 6. The voice guide, and review
 
-A voice guide is earned over rounds, not written in one pass. Generate a few drafts in the subject's voice on topics they really write about; have them flag what reads off; revise; repeat. Hold at least five rounds. The first pass always looks passable, which is why it is not done. Derive banned phrases from what this writer conspicuously never says in their real writing, not from a generic list of machine tells. The generic list is the floor. The absence-derived list is the signal. Most guides ban the em dash and set the punctuation defaults; the guide decides.
+A voice guide is earned over rounds, not written in one pass. Generate a few drafts in the subject's voice on topics they really write about; have them flag what reads off; revise; repeat. Hold several rounds, until the subject stops flagging lines. The first pass always looks passable, which is why it is not done. Derive banned phrases from what this writer conspicuously never says in their real writing, not from a generic list of machine tells. The generic list is the floor. The absence-derived list is the signal. Most guides ban the em dash and set the punctuation defaults; the guide decides.
 
 The campaign's reviewer checks every outbound line against the voice guide and the honesty floor. The reviewer is a judge model by default, a human when the owner pins it for that campaign. A pass ships. AI-written copy is neither banned nor exempt; campaigns A/B test copy variants on the outcome metric, model against model and AI against human, and keep what wins. The machine-writing tells in `PACK.md` are the floor for every variant.
 
@@ -96,10 +96,10 @@ Do not guarantee outcomes you do not control. Promise the thing you deliver. Qua
 
 ### 8. The honesty floor
 
-Ad limits are about honesty, not targeting. Speak to a real need with warmth. Reaching the people a product truly serves, including people who are lonely, stressed or behind, is the product doing its job. The line is manufacturing shame to pressure a sale: it is predatory and it underperforms.
+Ad limits are about honesty, not targeting. Speak to a real need with warmth. Reaching the people a product truly serves, including people under pressure from the problem it solves, is the product doing its job. The line is manufacturing shame to pressure a sale: it is predatory and it underperforms.
 
 - No fabricated proof, testimonials, reviews, numbers or case results. Real, attributable numbers; everything else marked "assume (validate)". A cited number keeps its citation.
-- Market the product as what it is. Never sell it as something its design rejects. A tool built to make itself unnecessary is not sold as "so you never need anyone again"; a plain-text editor is not sold as a design suite. The truth is the better pitch.
+- Market the product as what it is. Never sell it as something its design rejects. A budgeting app built to teach a habit is not sold as "never think about money again"; a plain-text editor is not sold as a design suite. The truth is the better pitch.
 - No outcome or clinical claims near health: route, don't diagnose. Never "cure", never "guaranteed", never a result the product cannot deliver.
 - No fake scarcity. Real capacity caps, real cohort dates, real price rises, real expiring bonuses.
 - No rigged comparisons: concede where the rival is better, win clearly where you are, prove every row.

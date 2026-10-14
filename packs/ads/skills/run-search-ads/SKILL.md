@@ -38,9 +38,9 @@ Keep AI-expanded matching in a separate, audited campaign with your own performi
 
 ### 2. Bidding and conversion data
 
-Smart bidding needs conversion density to function and far more to bid well. The platform's published floor is a dated row in `knowledge/platform-facts.md`. Below it, stay manual or max-clicks and feed the deepest trackable action. A new account with no history starts manual, accumulates the deepest trackable conversion, then moves to a target as a test while you watch spend.
+Smart bidding needs conversion density to bid well. A target-CPA strategy has no published floor; a target-ROAS strategy has one (dated rows in `knowledge/platform-facts.md`). Below a workable density, stay manual or max-clicks and feed the deepest trackable action. A new account with no history starts manual, accumulates the deepest trackable conversion, then moves to a target as a test while you watch spend.
 
-Never accept the recommended target blindly. Review your own 30- to 90-day results on weekly trend lines. Set the target near or just below stable recent performance. Wait if it is volatile.
+Never accept the recommended target blindly. Review your own recent results on weekly trend lines (the platform's own evaluation window is a dated row). Set the target near or just below stable recent performance. Wait if it is volatile.
 
 Import offline conversions by click id. Capture the click id as a hidden form field, store it with the lead, and upload id, conversion name, time and value when the lead reaches the chosen stage. The crm pack's stage claims (qualified, call held, closed) are the signal. The click id matching window is a dated row. Optimise to a stage that lands before it expires. Stage the values so the engine learns depth: a nominal value for a good lead, a larger one for a quote, the real value for a sale. Pass enough range and enough conversions inside it. Never pass flat or low-confidence values.
 
@@ -81,7 +81,7 @@ relevant searches per day (from the keyword tool, dated)
   = expected sales per month
 ```
 
-Say plainly when the pond is small: a few dozen relevant searches a day yields low single-digit clicks a day and a handful of leads a month. That is a trickle of high-intent demand, not a volume play, and it sits below the smart-bidding floor, which is why you start manual. At that size a weekly sheet beats an API or CRM build; add tracking complexity only when it changes a decision.
+Say plainly when the pond is small: a few dozen relevant searches a day yields low single-digit clicks a day and a handful of leads a month. That is a trickle of high-intent demand, not a volume play, and it is too thin for smart bidding to learn from, which is why you start manual. At that size a weekly sheet beats an API or CRM build; add tracking complexity only when it changes a decision.
 
 ### 7. The founder's weekly routine, in priority order
 

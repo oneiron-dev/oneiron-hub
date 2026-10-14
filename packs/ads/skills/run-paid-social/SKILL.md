@@ -8,7 +8,7 @@ metadata:
   contact: contact@oneiron.dev
   kind: workflow
   pack: oneiron.ads
-  reads: the campaign brief, per-creative performance claims, backend conversion claims, knowledge/platform-facts.md, knowledge/stale-registry.md
+  reads: the campaign brief, the platform report claims the host's connectors write, backend conversion claims, knowledge/platform-facts.md, knowledge/stale-registry.md
   data: references/delivery-mechanics.md, references/post-click-pages.md
 ---
 
@@ -36,7 +36,7 @@ Split campaigns only for meaningful differences: a different product line, a dif
 
 Campaign budget for scaling; ad-set budget for control. Validate a concept with an ad-set budget, promote proven winners into the campaign-budget scaler. Never add untested ads straight into the scaling campaign.
 
-Ad-set size follows purpose. Reading a test: a few variants of one concept (the platform's own recommended count is a dated row). Scaling: pack many and judge the set by its total contribution. The question is "am I reading this, or scaling it?". Small budgets always lean fewer.
+Ad-set size follows purpose. Reading a test: a few variants of one concept, few enough that the ad set can exit learning (the platform names too many ads as a cause of learning limited, a dated row). Scaling: pack many and judge the set by its total contribution. The question is "am I reading this, or scaling it?". Small budgets always lean fewer.
 
 Copy testing follows the same question. Need to know which line wins (early learning, building taste)? Duplicate ads so each carries one text variant. Trust delivery at scale? Use the ad-level text fields. Default for a founder still learning the message: duplicate to learn, then switch.
 
@@ -77,7 +77,7 @@ Read soft metrics as a set, cost per click first, then click-through, hook and h
 
 ### 5. Scaling
 
-Grow in steps smaller than the platform's learning-reset threshold, a dated row. On one platform that is about a fifth of the budget. Step every few days, when the campaign hits its targets. Never double overnight; a doubling resets learning. The named exception is a real sales period or a product that is plainly crushing it.
+Grow in steps small enough not to count as a significant budget change, which resets learning (a dated row; the platform publishes no percentage, so set your own step as "assume ~X (validate)"). Step every few days, when the campaign hits its targets. Never double overnight; a doubling resets learning. The named exception is a real sales period or a product that is plainly crushing it.
 
 Small automated increments beat big jumps. Set a ceiling. Read recent windows: a seven-day view, not a multi-year one that hides last week's deterioration.
 
@@ -106,7 +106,7 @@ A solo operator runs one channel, adjusts a couple of times a week rather than d
 
 ### 8. Short-video platform specifics
 
-Boost proven organic posts as ads; engagement accrues to the original post. The limits are dated rows. Creator codes track a creator's traffic and read as a floor. The hook window is longer than on the feed platform (a dated row); carry the two separately, never averaged. Refresh by adding creatives to the existing ad group, with big differences between creatives, not micro-variants.
+Boost proven organic posts as ads; engagement accrues to the original post. The limits are on the platform's page (a dated row). Creator codes track a creator's traffic and read as a floor. Each platform publishes its own hook guidance (dated rows); carry them separately, never averaged. Refresh by adding creatives to the existing ad group, with big differences between creatives, not micro-variants.
 
 ### 9. The page each ad sends people to
 
@@ -116,7 +116,7 @@ Two rules travel: never split-test the first page your ads point to (test with n
 
 ### 10. The agent ops loop
 
-Research, analyse, build, generate, funnel, optimise. The agent mines what is winning, models it, builds variants, generates assets, wires the funnel and optimises on the real outcome. Ads that have run thirty days or more count as proven in the swipe file; see the longevity rule below. One argument per ad. The owner approves spend through the dispatch gate. Reach for the loop when creative volume is the bottleneck, not as machinery on a tiny budget.
+Research, analyse, build, generate, funnel, optimise. The agent mines what is winning, models it, builds variants, generates assets, wires the funnel and optimises on the real outcome. Rank swipe-file hypotheses by longevity (the rule below). One argument per ad. The owner approves spend through the dispatch gate. Reach for the loop when creative volume is the bottleneck, not as machinery on a tiny budget.
 
 Ad longevity picks hypotheses, nothing more. A long-running ad shows sustained use, not proven performance. The ad count shows visible emphasis, not spend. The library shows no spend, no return, no budget. Use both to choose what to test first; never infer a competitor's return or budget from them.
 
@@ -139,5 +139,5 @@ Ad longevity picks hypotheses, nothing more. A long-running ad shows sustained u
 - The structure is consolidated and the reason for each split is written.
 - The optimisation event is the deepest trackable action with volume, and its window is stated.
 - Any pause or cut names the level it was read at and the mechanic it was checked against.
-- The scale step is below the learning-reset threshold and the read window is seven days.
+- The scale step is written as "assume ~X (validate)" against the learning-reset row, and the read window is seven days.
 - Kill and scale lines carry denominators and were written before launch.

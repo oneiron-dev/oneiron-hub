@@ -34,7 +34,7 @@ Not this skill: market choice, demand tests, pricing and live deals belong to th
 
 Write the quarter-end rule first. What result triggers KILL, what triggers SCALE, what triggers FIX. Each line carries its metric and its denominators: a spend floor and a time window. "CPL under X" is not a rule. "CPL under X over at least N conversions and N weeks" is.
 
-The consumer rules of thumb (LTV to CAC of 3 or more, payback inside three months) are assumptions to validate against the owner's own cohorts. Write them as "assume, validate". Never write them as benchmarks.
+Any value-to-CAC ratio or payback window you plan on is an assumption to validate against the owner's own cohorts. Write it as "assume ~X (validate)". Never write a borrowed one as a benchmark.
 
 ## Procedure
 
@@ -93,7 +93,7 @@ Revenue gates ("ads only above X revenue") and arbitrage calls ("this platform i
 
 The cheapest fit test is one offer, one channel, a pre-registered window, a tagged chain, a weekly human read and a kill line.
 
-- The window. A learning window and a stopping rule chosen up front. For an organic channel, on the order of a hundred posts across formats is a planning assumption you set, not a validated minimum.
+- The window. A learning window and a stopping rule chosen up front. For an organic channel, the window is a post count across formats that you set and write as "assume ~X (validate)"; a format search needs many posts before it says anything.
 - The chain. Reach, then profile visits, then link clicks, then unique paying buyers, minus refunds. Tag the link per format so buyers are countable.
 - The weekly read. The scheduler posts. A person reads the chain each week and changes formats. Drop what gets reach and no clicks.
 - The kill line. A count of paying buyers by the end of the window, written first.

@@ -85,9 +85,9 @@ The line is not "is the avatar good". It is: no fabricated proof (staged organic
 
 ### 7. Disclosure and platform labels
 
-Where a jurisdiction requires disclosure of a synthetic performer in an ad, disclose conspicuously or exclude that market from synthetic-presenter ads. The jurisdictions and the wording live in the compliance pack's content-marking rows; this skill applies them. Excluding one region from a campaign is an ordinary media-buying decision. Disclosure can also be on-brand for an honest-AI product; that is a choice, not a mandate.
+Where a jurisdiction requires disclosure of a synthetic performer in an ad, disclose conspicuously or exclude that market from synthetic-presenter ads. The jurisdictions and the wording live in the compliance pack's content-marking rows; this skill applies them. Excluding one region from a campaign is an ordinary media-buying decision. Some brands disclose by choice everywhere; that is a brand call.
 
-Platform AI-content labels and category limits stack on top of the legal duty (dated rows in `knowledge/platform-facts.md`). Meet both.
+Platform terms on generative output stack on top of the legal duty: no passing generated output off as human-made, no stripping its watermark or metadata (a dated row in `knowledge/platform-facts.md`). Meet both.
 
 ### 8. Review before budget
 

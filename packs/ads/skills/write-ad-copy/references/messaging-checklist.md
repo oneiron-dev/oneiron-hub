@@ -67,7 +67,7 @@ All run hook, develop, ask.
 2. Draft three pieces in their voice on topics they really cover.
 3. They mark what reads off: a word they never use, a rhythm, a closer.
 4. Revise. Add each flagged phrase to the ban list only when they never use it in their real writing.
-5. Repeat for at least five rounds. A stakeholder who wants to stop at round two because it "sounds fine" is the usual way a guide ships shallow.
+5. Repeat until the subject stops flagging lines. A stakeholder who wants to stop early because it "sounds fine" is the usual way a guide ships shallow.
 6. Record the punctuation defaults (most guides ban the em dash), the sentence length, the openers and closers, and the words the writer reaches for.
 
 ## The machine-writing tells
