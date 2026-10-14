@@ -36,6 +36,8 @@ The first folders are manifests for the seat packs (`packs/claude-seat`, `packs/
 
 `skills/tune-oneiron-retrieval` is what the slow retrieval loop reads at sleep: the knobs, how to read the retrieval receipts, how to judge a change on held-out runs, and what it must never touch. Its `NOTES.md` lists the engine work it waits on.
 
+`packs/crm` is the relationship-pipeline pack: nine skills a campaign agent loads at one moment of work (intake, outbound, replies, calls, deliverability, research interviews, lifecycle, accounts, measurement), a voice floor, dated defaults and platform facts, and two presets (consultancy, creator program). Its `PACK.md` names the engine work it waits on.
+
 ## License
 
 Apache-2.0, the same as the engine.
