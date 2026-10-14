@@ -73,4 +73,4 @@ A page's call to action is a sales-motion signal.
 
 ## Registries
 
-Government corporate registries are the cheapest rung of the waterfall. A resolved registration number is positive evidence of legal form and a stable join key. Its absence proves nothing. A registry never publishes the recipient's email, so it never grants a consent exemption on its own. The compliance pack's rows say what each jurisdiction's registry can assert.
+Government corporate registries are the cheapest rung of the waterfall. A resolved registration number is positive evidence of legal form and a stable join key. Its absence proves nothing. A registry never publishes the recipient's email, so it never grants a consent exemption on its own. The compliance rule rows say what each jurisdiction's registry can assert.

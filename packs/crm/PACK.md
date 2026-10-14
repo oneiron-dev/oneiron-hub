@@ -4,14 +4,14 @@ description: "Relationship pipeline for a vault: standing campaigns over people,
 version: 0.1.0
 license: Apache-2.0
 kind: capability
-grants: ["claims.write: the campaign, membership, fit, stage, reply, bounce, suppression and jurisdiction claim families the engine assigns this pack, on PERSON and ORG entities in the campaign's project", "entities.read: PERSON, ORG, EVENT and SESSION entities, relationship claims and prior message threads in the campaign's project", "saved_query.run: standing queries over the project, with judge spend under the vault's eval budget", "enrichment.call: the vault's enrichment providers in cost order, free registries first, paid lookups only after a cost flag", "outbound.propose: email and platform-DM sends on the vault's connected channel identities, through the dispatch gate; never a LinkedIn send", "compliance.read: the compliance pack's rule rows and each recipient's jurisdiction claim", "proposals.write: campaign launch, per-lead review, stage dials and suppression tightening; any loosening waits for the owner's stamp"]
+grants: ["claims.write: the campaign, membership, fit, stage, reply, bounce, suppression and jurisdiction claim families the engine assigns this pack, on PERSON and ORG entities in the campaign's project", "entities.read: PERSON, ORG, EVENT and SESSION entities, relationship claims and prior message threads in the campaign's project", "saved_query.run: standing queries over the project, with judge spend under the vault's eval budget", "enrichment.call: the vault's enrichment providers in cost order, free registries first, paid lookups only after a cost flag", "outbound.propose: email and platform-DM sends on the vault's connected channel identities, through the dispatch gate; never a LinkedIn send", "compliance.read: the compliance rule rows (the engine's seed rows now; the hub compliance pack's rows when it ships) and each recipient's jurisdiction claim", "proposals.write: campaign launch, per-lead review, stage dials and suppression tightening; any loosening waits for the owner's stamp"]
 wakes: ["saved_query.entered and saved_query.exited with cause data_change", "comm.reply, coded, on the vault's message projection", "comm.bounce, comm.unsubscribe and comm.complaint", "event.outcome on booked calls: held, no_show, rescheduled", "timer: snooze ends, follow-up offsets, commitment due dates, renewal reminders", "surface_event.dispatch.v1"]
 contact: "legal@oneiron.dev for removal requests, contact@oneiron.dev for everything else"
 ---
 
 # crm
 
-This pack runs relationships as standing programs over people. The vault is the record. A campaign never owns its people; it works them. Stage is earned by evidence, never by a score or an open. Every outbound send rides the dispatch gate. The law lives in the compliance pack as rule rows, and this pack reads them before any send.
+This pack runs relationships as standing programs over people. The vault is the record. A campaign never owns its people; it works them. Stage is earned by evidence, never by a score or an open. Every outbound send rides the dispatch gate. The law lives as rule rows: the engine ships seed rows, and the hub compliance pack will extend them. This pack reads them before any send.
 
 ## The campaign grammar
 
@@ -81,7 +81,7 @@ Each skill loads at one moment of work. Read the one for the moment you are in.
 - Never deletes a suppressed person. The minimal row stays so they are never contacted again.
 - Never moves a stage on a score, an open or a click.
 - Never spends a paid credit silently. Free first, then a cost flag, then the paid call.
-- Never sends to a recipient whose jurisdiction rows are missing or stale. Unknown takes the strict path.
+- Never sends on a stale rule row. A missing or unknown jurisdiction is not a refusal: the gate judges the send under the strict pole's rows. A row past its verified date blocks until it is re-verified.
 
 ## The floor every skill keeps
 
@@ -99,6 +99,6 @@ Each skill loads at one moment of work. Read the one for the moment you are in.
 
 ## Requires
 
-The campaign loop, saved queries and the claim families the engine assigns this pack. The compliance pack for jurisdiction rows. A host sender on the engine's outbound transport. Until the engine ships the pack install route, this folder is content and a manifest.
+The campaign loop, saved queries and the claim families the engine assigns this pack. The engine's seed compliance rows (`crm.compliance.v1`: UK, JP, EU, Germany, France, US), which the hub compliance pack will extend later. A host sender on the engine's outbound transport. Until the engine ships the pack install route, this folder is content and a manifest.
 
-**Not built yet, named so nothing here fakes it.** The inbound-submission path that accepts a form before enrichment. The lead-score test harness. The EVENT-to-calendar mapping for booked calls. The compliance pack's rule rows. The judge reviewer bound to the dispatch gate as a posture. Pack install from a hub at a pinned ref. Each is engine work; the skills say what they do without it.
+**Not built yet, named so nothing here fakes it.** The inbound-submission path that accepts a form before enrichment. The lead-score test harness. The EVENT-to-calendar mapping for booked calls. The judge reviewer bound to the dispatch gate as a posture. A send-mode input to the compliance gate: canon draws "missing List-Unsubscribe" as a block on every send, so the per-mode opt-out shape (a header on bulk, a plain line on one-to-one mail) waits on a canon re-rule and that input. Per-platform posture rows in the engine seed. Pack install from a hub at a pinned ref. Each is engine or canon work; the skills say what they do without it.

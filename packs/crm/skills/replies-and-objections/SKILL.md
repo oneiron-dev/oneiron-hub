@@ -37,7 +37,7 @@ For a proven offer and warm inbound, the first reply goes out within minutes, in
 
 Sort, don't overcome, for fit. Overcome, for fear.
 
-- A cold prospect without the problem: leave cleanly. "Sounds like you're covered. Thanks for the time."
+- A cold prospect without the problem: leave cleanly. "Looks like this is sorted at your end. Thanks for the time; I won't chase."
 - A warm lead with cold feet: work the fear with acknowledgement, a reply, a question that surfaces the next layer. Repeat to the real blocker.
 - Telling a bad fit not to buy is leverage. It earns the referral and the next deal.
 
@@ -53,9 +53,9 @@ A clean non-fit never gets silence.
 
 ## Procedure: answer an objection
 
-1. Pause. Mirror the last few words back as a question. Then silence.
-2. Label it: "sounds like the main concern is X." Wrong labels are fine; the correction tells you the truth.
-3. Ask "what else?" Get the whole stack before solving any of it.
+1. Pause. Echo the words that carried the weight, as a question. Then wait; let them fill the gap.
+2. Name it: "so the real worry is X." A wrong guess is fine; the correction tells you the truth.
+3. Empty the stack. Ask what else is on the list before you answer any of it.
 4. Answer trust with assets, not words: references, an audit, a guided session.
 5. Answer price with scope and value, never with a reflex discount. Price defence is in `references/objection-moves.md`.
 6. Close with a question that moves: "if we fixed X, what's between us and starting?"
@@ -73,8 +73,8 @@ Specific moves, in your own words, are in `references/objection-moves.md`.
 ## Procedure: stalled deals
 
 - Lost to "do nothing": record the real reason, what must change in their business, who you would need to win. Nurture against that, not generically.
-- Two broken commitments in a row: the plain confused note. "We agreed X mattered and Y was next. Two meetings slipped. Is this still a priority?"
-- Gone fully dark: the clarity ask. "Still interested, bad timing, or not a fit? I can take the truth."
+- Two broken commitments in a row: name them without heat and ask what changed. "Y was next after we agreed X mattered. It has slipped twice now. What changed on your side?"
+- Gone fully dark: offer the honest answers and make "no" easy. "Is this parked, dead, or still live? Any of the three is a fine answer."
 - A silent champion: multi-thread. Find the real decision-maker by a legitimate path and equip the champion, never bypass them.
 - No next step and no date means it is not pipeline. Re-establish or close it.
 - A deal that resurfaces on a new trigger re-opens with the trigger named.

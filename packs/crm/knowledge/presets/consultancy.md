@@ -9,7 +9,7 @@ A one-click bundle for a small services firm that sells diagnosis, projects and 
 | `member` | a membership claim: query match plus a dated trigger | cohort, not pipeline |
 | `replied` | a human-meaningful reply, coded positive-now | positive-later snoozes with a wake |
 | `call_booked` | an EVENT with a calendar reference | no-show runs the recovery branch |
-| `call_held` | a SESSION with a transcript | extraction writes their numbers and lead times as claims |
+| `call_held` | a SESSION with a transcript | extraction writes their numbers, constraints and dates as claims |
 | `proposal_sent` | a document artifact from the template plus a send receipt | e-sign send is an outbound effect through the gate |
 | `deposit_paid` | a settled commitment | the only yes that counts |
 | `diagnostic_delivered` | the paid first job's deliverable accepted | a fixed-scope first job before any retainer |
@@ -82,13 +82,13 @@ A default rhythm. Set yours in the brief.
 | 4 | the month's value recap in their numbers; the next month's plan |
 | quarterly | a review: their goals, before and after, issues, then growth only if the account is healthy |
 
-Fourteen small "here is what we did" touches beat one big reveal.
+Many small "here is what we did" touches beat one big reveal.
 
 ## Deposits and cash
 
 - Never start work before payment. The deposit is the commitment test and the cash floor.
 - Measure first contact to cash, not delivery time. If payment timing exceeds runway, fix deposits and terms before scaling delivery.
-- A soft collection note, under 60 words:
+- A soft collection note, under the cap in `voice-floor.md`:
 
 ```
 Hi {{first_name}},
@@ -100,7 +100,7 @@ Checking that invoice {{number}} for {{amount}} reached you and is in the queue.
 
 ## Price increases on existing clients
 
-Decide the fallback first: a reduced scope at the old price, or a clean goodbye that keeps the reference. For a high-touch client, say it in a conversation, then follow with the note. Anchor the new-client rate first, then move legacy clients to "the current rate," stepped over two invoices if you choose, with any loyalty gap stated as deliberate.
+Decide the fallback first: a reduced scope at the old price, or a clean goodbye that keeps the reference. For a high-touch client, say it in a conversation, then follow with the note. Anchor the new-client rate first, then move legacy clients to "the current rate," stepped across a few invoices if you choose, with any loyalty gap stated as deliberate.
 
 ```
 Hi {{first_name}},
@@ -147,6 +147,6 @@ A campaign that recruits people to learn from, never to sell to. Load `research-
 - ICP: recent concrete behaviour, not your suspected pain.
 - Offer: a short call, a stated purpose, an honest incentive.
 - Voice guide: says it is research; one ask; specific time windows.
-- GO gate: saturation within a tight segment.
-- KILL gate: scatter past ten conversations means the segment is fuzzy.
+- GO gate: saturation within a tight segment, past the interview floor in `defaults.md`.
+- KILL gate: scatter past the interview floor's upper bound means the segment is fuzzy.
 - Cross-campaign exclusion: a person is never a prospect and an interviewee at once.

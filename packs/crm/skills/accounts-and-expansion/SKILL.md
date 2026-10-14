@@ -20,7 +20,7 @@ Customer success starts at close. The account's record holds the promises, the s
 1. At close, every promise becomes a task with an owner and a date. Schedule kickoff, training, the reviews and the renewal reminder now.
 2. Define success and its measure up front, in writing. Without it you cannot prove value at renewal.
 3. A fast first win. Break delivery into small increments. Never leave the client unsure of the next touch.
-4. The spine: a welcome note, a questionnaire, a kickoff call. Checkpoints at 30, 60 and 90 days, then 12 months.
+4. The spine: a welcome note, a questionnaire, a kickoff call. Checkpoints at the offsets in `defaults.md`.
 5. A fixed-scope first job before any retainer. Land, prove, then expand.
 6. Plant the expansion seed early so recurring work is not a surprise at delivery. Track return throughout.
 7. Reconfirm the purchase in the first day or two. Name reasons the buyer did not. Keep small promises.
@@ -57,7 +57,7 @@ Proactive, problem-anchored touches around the predictable issues of each implem
 
 ## Procedure: renewal
 
-- A final review about three months out to surface blockers. The renewal talk about six weeks out.
+- A final review well before expiry to surface blockers, then the renewal talk. The schedule is in `defaults.md` and `references/review-and-renewal.md`.
 - Annual terms need a renewal workflow before expiry: reminders, a survey, one-click renew.
 - The last weeks weigh most. Buyers judge a recurring charge by the most recent period.
 - Outcome retainers: success defined at onboarding, clear scope, a coverage boundary. Renew on proof.
@@ -76,7 +76,7 @@ Proactive, problem-anchored touches around the predictable issues of each implem
 - Charge recurring only for recurring value without linear labour. Productise delivery. Prepay only as a value offer with easy exit.
 - Productise one or two maintenance or next-version add-ons. Measure their impact monthly so the case makes itself.
 - Project first, retainer second: return-framed updates during the project, the pitch at delivery when the win is fresh, handover documents that seed the next scope.
-- Gate every client-specific extra with four questions. Who takes the late-night call in six months? Is it right for the product, or only for this client? Who owns it when you leave? What breaks? Ship it like it runs for eighteen months, because it will.
+- Gate every client-specific extra with four questions. Who takes the late-night call long after launch? Is it right for the product, or only for this client? Who owns it when you leave? What breaks? Ship it as if it will run for years, because it will.
 - Enterprise form: land on the measurable cost-saver, expand into the workflows the delivered system makes possible, success defined in writing on the first call.
 - The live ask, the objection and the price are `discovery-to-close`.
 

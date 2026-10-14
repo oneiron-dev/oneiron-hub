@@ -4,7 +4,7 @@ A stage ladder for recruiting, trialling and paying real creators. Creators are 
 
 ## The gate
 
-A creator program is budget-heavy and time-heavy. Run it only after demand and price are settled, and only with a named full-time runner. If you cannot name who runs it, you cannot run it. It is the channel or it is nothing; it does not sit beside another paid channel on a two-person team.
+A creator program is budget-heavy and time-heavy. It works best once demand and price are settled and one person owns running it. It wants to be the channel, not a side bet next to another paid channel.
 
 ## The ladder
 
@@ -63,7 +63,7 @@ Editors for good creators only. Scripters. Coaches. Comment-to-DM through the pl
 
 ## The disclosure floor
 
-A paid or affiliate connection is disclosed clearly and conspicuously, in the video itself and above the fold. The brand instructs and monitors. Build it into the contract, the manual and the review list. The compliance pack's content-marking rows carry the jurisdiction detail. No fabricated testimonials, no staged comments, no claims the product cannot deliver, no shame hooks.
+A paid or affiliate connection is disclosed clearly and conspicuously, in the video itself and above the fold. The brand instructs and monitors. Build it into the contract, the manual and the review list. The compliance rule rows will carry the jurisdiction detail once a creator-disclosure row exists; until then read each market's regulator page. No fabricated testimonials, no staged comments, no claims the product cannot deliver, no shame hooks.
 
 ## Verdicts
 

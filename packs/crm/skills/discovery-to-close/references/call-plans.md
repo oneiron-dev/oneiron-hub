@@ -1,6 +1,6 @@
 # Call plans
 
-Timed instruments. Mark core and optional. Cut what does not fit. The lines are shapes; say them your way.
+Timed instruments. Mark core and optional. Cut what does not fit. The lines are shapes; say them your way. The lengths are the pack's practice defaults, in `defaults.md`; set yours in the brief.
 
 ## Discovery, 25 minutes
 
@@ -28,7 +28,7 @@ Questions that keep it about them:
 
 Anchor generic answers: "usually," "always," "we'd probably" get "when did that last happen? Talk me through it."
 
-Dig at emotion: "that seems to really bother you; I bet there's a story."
+Dig at emotion: "you went quiet there; what happened the last time?"
 
 ## Demo, 30 minutes
 
@@ -57,8 +57,8 @@ Mid-call disqualify line: "From what we've covered, I don't think we'd be much u
 Write it before any call where price, scope or conflict is live.
 
 1. **Goal.** The specific best case, written, sanity-checked with someone.
-2. **Summary.** The known facts in two or three sentences that could earn "that's right."
-3. **Labels and the audit.** Three to five things they might think or say about you, the unfair ones included, to say first.
+2. **Their side, played back.** The known facts in two or three sentences, told the way they would tell them, so they confirm you have it exactly.
+3. **The objections you say first.** Three to five things they might think or say about you, the unfair ones included. Name them before they do.
 4. **Questions.** Three to five open questions, including the deal-killer and the behind-the-table question.
 5. **Non-cash list.** What they own that is cheap for them and valuable to you: a case study, referrals, prepay, a longer term, a logo, implementation help.
 
@@ -73,8 +73,6 @@ A shared document, built backward from go-live.
 | procurement | | | |
 | signature | | | |
 | kickoff | | | |
-
-Make approvals look like effort. A reply four hours later lands better than an instant yes.
 
 ## The champion's one-page case
 

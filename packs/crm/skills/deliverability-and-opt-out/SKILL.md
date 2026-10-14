@@ -1,6 +1,6 @@
 ---
 name: deliverability-and-opt-out
-description: Set up a sender that lands, read sender health, run the stop-loss, honour every opt-out by suppressing and never deleting, and check the recipient's local law through the compliance pack's rows before any send. Opt-out per mode: a list-unsubscribe header on bulk, a plain line on one-to-one mail.
+description: Set up a sender that lands, read sender health, run the stop-loss, honour every opt-out by suppressing and never deleting, and check the recipient's local law through the compliance rule rows before any send. Opt-out per mode: a list-unsubscribe header on bulk, a plain line on one-to-one mail.
 version: 0.1.0
 license: Apache-2.0
 metadata:
@@ -17,9 +17,9 @@ Sender reputation does not come back. Everything here protects it. The engine's 
 
 ## Before the first send
 
-1. **Authenticate.** SPF or DKIM at minimum; both for anything near bulk. DKIM is off by default on hosted workspaces; turn it on. Valid forward and reverse DNS. TLS.
+1. **Authenticate.** SPF or DKIM at minimum; both for anything near bulk. A hosted workspace may not sign with your domain's key until you set it up; check, then turn it on. Valid forward and reverse DNS. TLS.
 2. **DMARC.** Publish monitoring with reports, then ramp to quarantine and reject over weeks. Monitoring is never the end state.
-3. **Postmaster tools.** Connect the provider's tools first. Watch spam rate weekly. Targets in `defaults.md`.
+3. **Postmaster tools.** Connect the provider's tools first. Watch spam rate weekly. Targets in `defaults.md`, sources in `platform-facts.md`.
 4. **Pick the domain by blast radius.** No provider publishes a safe ceiling below the bulk tier. The real question is what else lives on the domain: banking, invoices, client mail. A cheap lookalike with its own seat is insurance, not a rule. Workspace policy binds the account, not the domain string.
 5. **No warm-up pools.** Simulated engagement is a spam signal. An aged, used mailbox needs no warm-up. A new one ramps gradually to engaged recipients.
 6. **Register the sender identity.** The vault's channel identity carries the health claims. Multi-venture isolation is per project: each venture's domains, suppression and reputation stay apart. Never the crown domain for cold.
@@ -32,18 +32,18 @@ Sender reputation does not come back. Everything here protects it. The engine's 
 | bulk (many recipients, the same message, a bulk-tier sender) | a one-click list-unsubscribe header the adapter injects, plus a visible unsubscribe line |
 | one-to-one (a researched, personal mail at founder volume) | a plain opt-out line in the text; no list-unsubscribe header, because receivers read that header as bulk |
 
-Either way: honest, undisguised sender identity and a working way out. The compliance pack's `optout_mechanism` and `optout_deadline` rows say what each jurisdiction requires on top; the gate blocks a send that lacks what the rows demand.
+Either way: honest, undisguised sender identity and a working way out. The `optout_mechanism` and `optout_deadline` rule rows say what each jurisdiction requires on top; the gate blocks a send that lacks what the rows demand. One gap, named: canon draws a missing list-unsubscribe header as a block on every send, and the gate has no send-mode input yet. Until canon re-rules it, a one-to-one mail that the adapter signs with the header is still correct; the plain opt-out line is what this skill adds.
 
 ## Procedure: before any send, check the law
 
-1. Read the recipient's jurisdiction claim. It is projector-written from evidence: domain, address, registry. Unknown takes the strict path.
-2. Read the compliance pack's rows for that jurisdiction and channel: consent class, sender identity, physical address, opt-out mechanism, opt-out deadline, content marking, records, source hygiene.
-3. Check the recipient's legal form where the consent class turns on it. A domain cannot prove it. A registry number can. Unknown takes the strict path.
+1. Read the recipient's jurisdiction claim. It is projector-written from evidence: domain, address, registry. An absent, low-confidence or unseeded jurisdiction is not a refusal: the gate judges the send under the strict pole's rows (the engine seeds Germany's).
+2. Read the rule rows for that jurisdiction and channel: consent class, sender identity, physical address, opt-out mechanism, opt-out deadline, content marking, records, source hygiene. A country token composes with its region: a German recipient gets the German rows and the EU floor.
+3. Check the recipient's legal form where the consent class turns on it. A domain cannot prove it. A registry number can. Unknown legal form blocks under a conditional row.
 4. Check list provenance. An unknown-provenance list is refused where the rows make harvested lists an aggravation.
-5. Check the row's verified date. A stale row blocks the send. Re-verify the row; never guess.
+5. Check the row's verified date. A stale row blocks the send until it is re-verified. Re-verify it; never guess.
 6. Social DMs sit inside the email statute in some places and outside it in others. Channel scope is a row, never an assumption.
 
-The compliance pack is drafted later. Until its rows exist, the owner supplies the rows by hand for each target jurisdiction and dates them. Nothing in this skill invents a statute.
+The engine ships seed rows (`crm.compliance.v1`) for the UK, Japan, the EU floor, Germany, France and the US, on email and LinkedIn, each with a statute citation and a verified date. Read them first. Add hand rows, dated and cited, only for a jurisdiction or channel they lack; the hub compliance pack will carry those later. Nothing in this skill invents a statute.
 
 ## Sender health
 
@@ -87,20 +87,20 @@ A hard bounce writes a bounce claim. The bounce claim writes a suppression claim
 
 ## LinkedIn
 
-A human sends, from their own session, at a reading pace. Requests sit well under the street ceiling in `platform-facts.md`. Restriction stories trace to automation fingerprints, not volume. Nothing ever connects to the person's account: not a sequencer, not a signal tool, not an extension.
+A human sends, from their own session, at a reading pace. Requests stay well under the unpublished weekly limit; see `platform-facts.md`. Restrictions follow bursts, ignored invites and automation fingerprints, not steady volume. Nothing ever connects to the person's account: not a sequencer, not a signal tool, not an extension.
 
 ## Never
 
 - Open tracking. No pixels, no tracking links in cold mail.
 - A fake delay, an inserted typo, a fake office. Disclose a model where it is material.
-- A send to a recipient with missing or stale rows.
+- A send on a stale rule row.
 - Deleting a suppressed person.
 - A scraper against a site's terms.
 
 ## Checks before a batch
 
 - Authentication is green and the postmaster spam rate is under target.
-- Every recipient has a jurisdiction claim and fresh rows.
+- Every recipient's governing rows, their own jurisdiction's or the strict pole's, are inside their verified window.
 - Every message carries the opt-out shape for its mode.
 - The sender's health claims are under every threshold.
 - The stop-loss is written on the campaign.

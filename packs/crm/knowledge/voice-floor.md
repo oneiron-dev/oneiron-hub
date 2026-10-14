@@ -9,7 +9,9 @@ Every outbound message keeps this floor. The campaign's voice guide sits on top 
 - Placeholders in SEND are minimal, formatted `{{like_this}}`, and only for facts the owner supplies.
 - Count the words of every SEND block. Over the cap, cut self-description first, then context, then pleasantries. One ask survives.
 
-## Word caps (defaults; the voice guide may tighten them)
+## Word caps
+
+Defaults. The voice guide may tighten them. Source: the pack authors' practice, no external source, dated 2026-10-15. The campaign brief overrides.
 
 | message | cap |
 |---|---|
@@ -18,7 +20,9 @@ Every outbound message keeps this floor. The campaign's voice guide sits on top 
 | re-engagement after silence | 50 |
 | research-interview ask | 120 |
 | objection or discount reply | 120 |
+| marketplace proposal | 150 |
 | price-increase notice | 150 |
+| collection note | 60 |
 
 ## Write like a small, direct human
 
@@ -29,7 +33,6 @@ Every outbound message keeps this floor. The campaign's voice guide sits on top 
 - Ask for interest, not for time. The link comes after they reply.
 - Uneven sentence length is fine. Perfect symmetry reads as a template.
 - One real observation stated as your own read. One sentence that risks being wrong.
-- Em dashes are off by default. A voice guide may turn them on.
 
 ## Tells the reviewer rejects
 

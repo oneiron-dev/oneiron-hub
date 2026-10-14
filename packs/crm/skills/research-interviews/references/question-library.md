@@ -66,7 +66,7 @@ After "I'd definitely buy that":
 
 ## Usability
 
-"The product is being tested, not you. Say everything you are thinking as you go."
+"We're testing the product, not you. Say everything you're thinking as you go, even the dull bits."
 
 ## Feature requests
 
@@ -99,14 +99,14 @@ Any one of these marks an opportunity:
 - "What would make it a no-brainer?"
 - "What would you pay for that version?"
 
-## The cold meeting ask (five beats, under 120 words)
+## The cold meeting ask (five beats, under the interview-ask cap)
 
 ```
 Hi {{first_name}},
 
 I'm trying to make {{the painful thing}} less of a chore. We're early and have nothing to sell. The part I don't understand is {{the specific gap}}. You've done {{their thing}} for years and could cut through it fast.
 
-Would you have twenty minutes next week? I'm free {{two windows}}. This is research, not a sales call.
+Could I borrow {{call_length}} next week? I'm free {{two windows}}. This is research, not a sales call.
 
 {{sender_first_name}}
 ```

@@ -1,6 +1,6 @@
 # Review and renewal
 
-Templates for the recurring account rhythm. Fill them from the account's claims. Never a number you cannot point to.
+Templates for the recurring account rhythm. Fill them from the account's claims. Never a number you cannot point to. Call lengths and the renewal offsets are the pack's practice defaults in `defaults.md`; the brief overrides them.
 
 ## The quarterly review agenda, 30 minutes
 

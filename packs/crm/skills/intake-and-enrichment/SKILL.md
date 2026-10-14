@@ -104,7 +104,7 @@ Each sensor writes claims and stops. Procedures in `references/signal-sensors.md
 5. Adopt only the layer the evidence supports. Two layers are never rented: nothing connects to a person's real LinkedIn, and nothing auto-sends outside the gate.
 6. Rent a signal feed only after free radar (job alerts, registry watches, review sweeps) proves to be the bottleneck.
 7. Price renting against your own all-manual baseline: measure the minutes it takes you to hand-find and verify one contact.
-8. Before prospect data passes through any processor, get the signed data-processing agreement the compliance pack's records rows call for.
+8. Before prospect data passes through any processor, get the signed data-processing agreement that the records rows in the compliance rule set call for.
 
 ## Checks before you hand off
 

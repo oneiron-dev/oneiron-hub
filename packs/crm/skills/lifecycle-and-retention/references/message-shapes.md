@@ -11,7 +11,7 @@ Hi {{first_name}},
 
 A while back you wanted {{the specific thing they asked for}}. It works now, and what you said is part of why.
 
-Everything you had is still there, where you left it. If now is a good time, it takes about a minute to pick up: {{one_link}}
+Everything you had is still there, where you left it. If now is a good time, picking up is one tap: {{one_link}}
 
 If now is not the time, that is fine. Nothing to do.
 
@@ -25,7 +25,7 @@ Why it passes: anchored on their own ask, one action, opting out is explicitly f
 ```
 {{first_name}}, you have {{n}} days of {{their thing}} logged this month. One more today fills in {{month}}'s picture.
 
-[Log it, about ten seconds]
+[Log it, one tap]
 ```
 
 The loss named is their real pattern, not an app-centric threat. Suppress it the moment they have logged today. Back off after the taper window.
@@ -54,7 +54,7 @@ Next up: {{one thing}}. If you want it sooner, reply and tell me why.
 2. **One question.** "What made you cancel?" Options: too expensive; not using it right now; couldn't get it working; missing something; bought by mistake; other.
 3. **One matched response, or none.**
    - too expensive: the cheaper tier, or the annual reframe; one line; the cancel button stays
-   - not using it right now: "Pause for {{1 or 2 months}}?" and the cancel button
+   - not using it right now: "Pause for {{pause_length}}?" and the cancel button
    - couldn't get it working: "Want a ten-minute setup call?" and the cancel button
    - missing something: "Tell me what" and the cancel button
    - bought by mistake: no offer; confirm the cancel and the refund route

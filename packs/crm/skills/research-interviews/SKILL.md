@@ -27,7 +27,7 @@ Feedback from people who match none of the four is noise wearing a smile. Weight
 ## Recruiting
 
 - Recruit by recent concrete behaviour, never by your guess about their pain. "People who hosted a weekly event this month," not "people who struggle with event planning."
-- The ask says it is research. One ask per message. Easy to accept. Specific time windows. Under 120 words.
+- The ask says it is research. One ask per message. Easy to accept. Specific time windows. Under the interview-ask cap in `voice-floor.md`.
 - A cold meeting ask has five beats. The thing you want to make less painful. That you have nothing to sell. The thing you do not understand. Why they, specifically, can cut through it. The ask, with a window.
 - Channels, each with its own shape:
   - forums: check the rules; a plain post with goal, who, length, confidentiality, incentive
@@ -36,7 +36,7 @@ Feedback from people who match none of the four is noise wearing a smile. Weight
   - existing customers: a founder-signed note, a short ask, a calendar link
   - in-product: a short ask with an incentive, routed to scheduling
 - Overbook. Plan for no-shows. Incentives by type: a small card for discovery, cash for churned users, something more for screen-share labour, a thank-you note for happy customers. Send the incentive on the call and confirm receipt.
-- No-show: wait a quarter hour, then a kind note assuming something came up, with a link.
+- No-show: give it a short wait, then a kind note that assumes something came up, with a link.
 
 ## Format by mode
 
@@ -50,13 +50,13 @@ Across all three: their past, specifics, mostly listening. A plan is a timed scr
 
 ## Technique
 
-- Ask to record. Say you are paranoid about missing things and it will not be shared.
+- Ask to record. Say it lets you listen instead of scribbling, and that it stays private.
 - Neutral acknowledgements. Validate without agreeing. Never correct their facts; their model is the data.
 - Anchor fluff: "usually," "always," "I would" get "when did that last happen? Walk me through it."
 - Dig at emotion. Stop the script and ask for the story.
 - Deflect compliments: "how are you dealing with it at the moment?"
 - Conceal the idea when testing the problem. Reveal it when testing the solution. The sin is pitching while calling it research.
-- One or two interviews a day. They are expensive. Start with easier types before cancellations.
+- Hold the cadence in `defaults.md`. Interviews are expensive. Start with easier types before cancellations.
 
 ## The question library
 
@@ -73,7 +73,7 @@ In `references/question-library.md`: replacements for "would you buy" and "how m
 
 ## Observe, do not only ask
 
-What they do with an answer on Monday morning beats what they say they want. A stubborn technical objection often protects a workflow; go watch it. Interview the exception path, not the golden path. When embedded with a customer and the fix is under a day, ship it instead of a study; what they do with it is the evidence.
+What they do with an answer on Monday morning beats what they say they want. A stubborn technical objection often protects a workflow; go watch it. Interview the exception path, not the golden path. When embedded with a customer and the fix is quicker to ship than to study, ship it; what they do with it is the evidence.
 
 ## Grading what you heard
 
@@ -96,15 +96,15 @@ Say "hint," not "validated." A future promise converts on the spot: ask for the 
 - A need counts once it appears twice. Pain times frequency sorts them.
 - Keep exact phrasing. It becomes copy and positioning later.
 - Set the next three questions after every batch. A program with no current question list is a habit, not research.
-- Stop at saturation inside a tight segment. Five is the floor for a decision. Scatter past ten means the segment is fuzzy; tighten it, do not add interviews.
+- Stop at saturation inside a tight segment. The interview floor and the scatter bound are in `defaults.md`. Scatter past the bound means the segment is fuzzy; tighten it, do not add interviews.
 
 ## Pre-sales
 
 - A pre-sell pitch states the price, the deliverable and the timing plainly. Hiding the price turns a commitment test into a curiosity test.
-- The sprint: ten reachable likely buyers; "for {{price}} I will {{outcome}} in {{time}}"; ask for money; set the pass bar before you start.
+- The sprint: a short list of reachable likely buyers (the size is in `defaults.md`); "for {{price}} I will {{outcome}} in {{time}}"; ask for money; set the pass bar before you start.
 - Listen to the problem, float two or three options, turn the one that lands into a priced offer.
 - A commitment offer for businesses: a small named early cohort, a time window, money back if the promise fails, charged on day one.
-- The parallel offer test: mine community questions, write five to ten truly different offers, send each to a cold list, pre-register booking-rate bars, kill fast.
+- The parallel offer test: mine community questions, write several truly different offers (the count is in `defaults.md`), send each to its own cold list, pre-register booking-rate bars, kill fast.
 - Warm contacts are fine for the first sales if the ask is real money at a real price. Cold buyers before claiming repeatability.
 - Every no gets four questions: why, who would want this, what would make it obvious, what would you pay for that.
 - Never misrepresent the current state. Say what exists and when it ships. Take a founding-customer commitment on that basis.

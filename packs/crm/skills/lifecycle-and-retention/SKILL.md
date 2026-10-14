@@ -99,7 +99,7 @@ Three groups, three treatments. A small group loves you: they want attention; te
 - A save offer only matches the stated reason. A reflex discount teaches people to churn for the next one.
 - The exit survey feeds diagnosis, not a save ambush.
 - Respect the leaving user, especially a thriving one. Leave a clean door.
-- Easy-cancel and auto-renew disclosure are law in many places. The compliance pack's rows say which. Never invent a statute.
+- Easy-cancel and auto-renew disclosure are law in many places. The compliance rule rows will say which once they carry cancel and auto-renew entries; until then read the statute for each market. Never invent one.
 
 ## Message shapes
 

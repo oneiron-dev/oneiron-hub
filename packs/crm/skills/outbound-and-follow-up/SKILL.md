@@ -19,19 +19,19 @@ You write what a person reads. The member record tells you who, why they are in,
 
 | mode | shape | when |
 |---|---|---|
-| low and slow | a handful a day, real research each, trigger-true, human-written prose | founder volume; senior or outreach-saturated recipients |
+| low and slow | a handful a day, real research each, trigger-true prose written whole by one author | founder volume; senior or outreach-saturated recipients |
 | volume | separate sending domains, many mailboxes, a proven template with two or three short model-filled slots | broad lists, less saturated recipients, a budget for infrastructure |
 
 At founder volume only trigger-true low-and-slow has a pulse. Volume is a capital game. Pick one per campaign and write it in the brief.
 
-Who writes the words depends on mode and recipient sophistication. In low-and-slow a model writes only when the campaign's reviewer and A/B arms say its drafts win. In volume mode a model fills short slots inside a human template. In either mode, every draft passes the thousand-people screen.
+Any author may write the whole mail: a model, a human, or a model edited by a human. The reviewer passes or fails each draft against the voice guide and the floor. The arms decide who keeps writing: model against model, model against human, read on the outcome metric. In volume mode a model may also fill short slots inside a proven template. In either mode, every draft passes the thousand-people screen.
 
 ## Procedure: touch one
 
 1. **Read the card.** The trigger, the contact, the angle, the do-nots. No real trigger means leave a research placeholder for a human. Never a generic persona claim.
 2. **Pick the shape.** See `references/templates.md`. The default is trigger, trouble question, proof, tiny ask.
 3. **Put the whole case in touch one.** Never save the good part for the bump.
-4. **Write it under the cap.** Ninety words. Plain text. No link. First line about them. Interest ask, not a time ask.
+4. **Write it under the cap.** The cold-touch cap in `voice-floor.md`. Plain text. No link. First line about them. Interest ask, not a time ask.
 5. **Add the person back.** One real observation as your own read. One sentence that risks being wrong. Uneven lines.
 6. **Screen it.** Could it go to a thousand people? Then it fails. Does it carry any tell from the voice floor? Then it fails.
 7. **Tag the arm.** Every send carries its variant tag so the coded reply closes the loop.
@@ -53,7 +53,7 @@ Run follow-up off the record's clock, not memory. Nudges fire at set day offsets
 
 ## Writing rules
 
-- A human-written template is the spine. A model may fill two or three short slots whose names say what goes in them. Keep the model's share small.
+- In volume mode a proven template is the spine, and a model fills short slots whose names say what goes in them. In low and slow, the author writes the whole mail; the arm read decides which author keeps the pen.
 - Casual and a little imperfect beats polished. Polish is now the tell.
 - No HTML template, no logo, no button. Text only.
 - Social proof is a similar customer's behaviour. Match on role, then size, then industry, then pain.
@@ -89,12 +89,12 @@ Automate what widens reach: list building, research, the clock, the arm tags. Ke
 - The trigger is real and inside its decay window.
 - The arm tag and the sender ref are on the send.
 - The member's channel set includes this channel with basis.
-- The compliance rows for the recipient's jurisdiction are present and fresh. If not, do not propose; raise it.
+- You know which rule rows the gate will apply: the recipient's jurisdiction, or the strict pole when it is unknown. A stale row blocks at the gate; re-verify it, or propose and expect the block.
 
 ## You slip here
 
 - Writing a bump that restates the pitch.
-- Letting a model write the whole mail in low-and-slow mode.
+- Picking the author by taste instead of by the arm read.
 - A "noticed you on your site" line with nothing behind it.
 - Proposing a LinkedIn send instead of a draft.
 - Quoting a reply rate without its date.
