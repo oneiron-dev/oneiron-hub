@@ -102,7 +102,7 @@ Rules for a skill folder:
 
 | field | required | write |
 |---|---|---|
-| `name` | yes | The pack's name. The folder name matches the part after the author, so the folder crm holds the pack oneiron.crm. |
+| `name` | yes | The pack's name. The folder name matches it. |
 | `description` | yes | One paragraph for the index row and the install card. |
 | `version` | yes | Bump it on every change to any file in the folder. |
 | `license` | yes | An SPDX id. |
@@ -196,11 +196,11 @@ Rules for an agent pack:
 ## So the engine parses it
 
 - Write the frontmatter between two lines of three dashes. One key per line. Each key once.
-- In a PACK.md, indent nothing. Write each list as a JSON string array on one line.
+- In a PACK.md, indent nothing. Write `grants` and `wakes` as a JSON array of strings on one line. Write `migrations` as a JSON array of maps on one line.
 - In a SKILL.md, `metadata` may hold one level of lines indented by two spaces. Each one is a key, a colon and a plain value.
 - Quote a value as a JSON string when it holds an apostrophe or any of & * ! { [ | > #. When in doubt, quote.
 - A connector pack needs an `adapter`. A script adapter's path starts with `scripts/`.
-- A pack's name is author-scoped and lowercase: the author, a dot, then lowercase letters, digits, dashes or underscores.
+- The engine reads a pack's name as author-scoped and lowercase: the author, a dot, then lowercase letters, digits, dashes or underscores. [NOTES.md](NOTES.md) says how this hub names the folder.
 - Today's engine reads some keys the contract does not name, and the agent pack check needs one of them. [NOTES.md](NOTES.md) lists them. Keep them out of a hub folder until the contract carries them.
 
 ## Lenses: a vault object, not a hub kind

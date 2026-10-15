@@ -77,6 +77,31 @@ describe("customize-oneiron conformance", () => {
     expect(errors.some((e) => e.includes("never teaches `mount(ref)`"))).toBe(true);
   });
 
+  test("an invented verb inside a fenced example fails", () => {
+    const errors = checkEdited((t) => t.replace("There is no verb family for hooks.", "There is no verb family for hooks.\n\n```ts\nvault.hooks.put(folder);\n```"));
+    expect(errors.some((e) => e.includes("example call `vault.hooks.put(folder)` is not an authoring verb in canon"))).toBe(true);
+  });
+
+  test("a canon verb inside a fenced example passes", () => {
+    const errors = checkEdited((t) => t.replace("There is no verb family for hooks.", "There is no verb family for hooks.\n\n```ts\nconst h = vault.packs.put(folder);\nvault.packs.export(h);\nmount(forkHash);\n```"));
+    expect(errors).toEqual([]);
+  });
+
+  test("a mount call with another reference passes", () => {
+    const errors = checkEdited((t) => t.replace("Use a fork hash when a read must replay the same way.", "Use a fork hash, as in `mount(forkHash)`, when a read must replay the same way."));
+    expect(errors).toEqual([]);
+  });
+
+  test("dropping a contract file fails", () => {
+    const errors = checkEdited((t) => t.replace(/^- `HOOK\.md` carries .*\n/m, ""));
+    expect(errors.some((e) => e.includes("never names the contract file `HOOK.md`"))).toBe(true);
+  });
+
+  test("a table without a required column fails", () => {
+    const errors = checkEdited((t) => t.replace("| field | required | write |\n|---|---|---|\n| `name` | yes | The pack's name.", "| field | requirement | write |\n|---|---|---|\n| `name` | yes | The pack's name."));
+    expect(errors.some((e) => e.includes("needs a `required` column"))).toBe(true);
+  });
+
   test("a hand-edited snapshot fails", () => {
     const tampered = structuredClone(snapshot);
     tampered.payload.hubFolderContracts[0].frontmatter.push({ name: "role", required: false, meaning: "hand-added" });

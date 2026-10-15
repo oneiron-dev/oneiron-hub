@@ -145,7 +145,10 @@ interface Doc {
   headings: { level: number; text: string }[];
   tables: Table[];
   blocks: Block[];
+  /** Inline code spans, headings and tables included. */
   tokens: Token[];
+  /** Authoring and mount calls inside fenced examples. */
+  calls: Token[];
 }
 
 const strip = (cell: string): string => cell.trim().replace(/^`(.*)`$/, "$1").trim();
@@ -157,7 +160,7 @@ function frontmatterKeys(lines: string[]): string[] {
 }
 
 function readDoc(file: string, text: string, kindOfHeading: (h: string) => string | null): Doc {
-  const doc: Doc = { frontmatter: [], headings: [], tables: [], blocks: [], tokens: [] };
+  const doc: Doc = { frontmatter: [], headings: [], tables: [], blocks: [], tokens: [], calls: [] };
   const lines = text.split("\n");
   let i = 0;
   if (lines[0] === "---") {
@@ -177,7 +180,13 @@ function readDoc(file: string, text: string, kindOfHeading: (h: string) => strin
       if (fenceMark === fence.mark) {
         doc.blocks.push({ file, line: fence.start, kind, lines: fence.lines });
         fence = null;
-      } else fence.lines.push(raw);
+      } else {
+        fence.lines.push(raw);
+        // Code in an example is not prose: only its authoring and mount calls are read.
+        for (const m of raw.matchAll(/\bvault\.[\w<>]+(?:\.\w+)?(?:\([^)\n]*\))?|\bmount\([^)\n]*\)/g)) {
+          doc.calls.push({ file, line: lineNo, text: m[0] });
+        }
+      }
       continue;
     }
     if (fenceMark) {
@@ -185,6 +194,7 @@ function readDoc(file: string, text: string, kindOfHeading: (h: string) => strin
       fence = { mark: fenceMark, start: lineNo, lines: [] };
       continue;
     }
+    for (const m of raw.matchAll(/`([^`\n]+)`/g)) doc.tokens.push({ file, line: lineNo, text: m[1].trim() });
     const heading = raw.match(/^(#{1,6})\s+(.*)$/);
     if (heading) {
       table = null;
@@ -207,7 +217,6 @@ function readDoc(file: string, text: string, kindOfHeading: (h: string) => strin
     } else {
       table = null;
     }
-    for (const m of raw.matchAll(/`([^`\n]+)`/g)) doc.tokens.push({ file, line: lineNo, text: m[1].trim() });
   }
   if (fence) throw new Error(`${file}:${fence.start}: code fence is not closed`);
   return doc;
@@ -306,6 +315,7 @@ export function checkSkill(skillDir: string, snapshot: Snapshot): Result {
       for (const n of names) check(want.has(n), `${at(t)}: \`${n}\` is not a ${t.kind} ${part} entry in the contract data`);
       for (const n of want.keys()) check(names.includes(n), `${at(t)}: ${t.kind} ${part} entry \`${n}\` from the contract data is missing`);
       const ri = t.header.indexOf("required");
+      check(ri >= 0, `${at(t)}: a \`${head}\` table needs a \`required\` column, so its flags can be checked`);
       if (ri >= 0) for (const r of t.rows) {
         const f = want.get(strip(r[0]));
         const said = strip(r[ri] ?? "").toLowerCase();
@@ -333,23 +343,34 @@ export function checkSkill(skillDir: string, snapshot: Snapshot): Result {
     for (const f of contract.frontmatter.filter((f) => f.required)) check(keys.includes(f.name), `${at(b)}: example ${contract.kind} frontmatter lacks required \`${f.name}\``);
   }
 
-  // 5. Every inline code token names something the contract data or canon carries.
+  // 5. Every inline code token names something the contract data or canon carries;
+  //    every authoring or mount call in a fenced example is a canon verb.
   const families = new Set(authoring.families);
   const methods = new Set(authoring.methods);
+  const isVerb = (s: string): boolean => {
+    const m = s.match(/^vault\.(<kind>|[a-zA-Z]+)(?:\.([a-zA-Z]+)(\([^)]*\))?)?$/);
+    return (
+      !!m &&
+      (m[1] === "<kind>" || families.has(m[1])) &&
+      (!m[2] || methods.has(m[2]) || (m[1] === authoring.reimport.family && m[2] === authoring.reimport.method))
+    );
+  };
+  // The canon signature names the parameter; a call may pass any reference.
+  const mountName = mount.verb.slice(0, mount.verb.indexOf("("));
+  const isMount = (s: string): boolean => new RegExp(`^${mountName}\\([^()]*\\)$`).test(s);
+  for (const c of docs.flatMap((d) => d.calls)) {
+    if (c.text.startsWith("vault.")) check(isVerb(c.text), `${at(c)}: example call \`${c.text}\` is not an authoring verb in canon (${authoring.source})`);
+    else check(isMount(c.text), `${at(c)}: example call \`${c.text}\` is not the mount verb in canon (${mount.verb})`);
+  }
   for (const t of tokens) {
     const s = t.text;
     const where = at(t);
     if (/^vault\./.test(s)) {
-      const m = s.match(/^vault\.(<kind>|[a-zA-Z]+)(?:\.([a-zA-Z]+)(\([^)]*\))?)?$/);
-      const ok =
-        !!m &&
-        (m[1] === "<kind>" || families.has(m[1])) &&
-        (!m[2] || methods.has(m[2]) || (m[1] === authoring.reimport.family && m[2] === authoring.reimport.method));
-      check(ok, `${where}: \`${s}\` is not an authoring verb in canon (${authoring.source})`);
+      check(isVerb(s), `${where}: \`${s}\` is not an authoring verb in canon (${authoring.source})`);
     } else if (/^\.[a-zA-Z]+\(/.test(s)) {
       check(methods.has(s.slice(1, s.indexOf("("))), `${where}: \`${s}\` is not an authoring method in canon`);
     } else if (/^mount\(/.test(s)) {
-      check(s === mount.verb, `${where}: \`${s}\` is not the mount verb in canon (${mount.verb})`);
+      check(isMount(s), `${where}: \`${s}\` is not the mount verb in canon (${mount.verb})`);
     } else if (/^[^\s]+\/$/.test(s)) {
       const segments = s.slice(0, -1).split("/");
       const ok = segments.every((seg) => /^<[^>]+>$/.test(seg) || folderNames.has(`${seg}/`));
@@ -366,8 +387,9 @@ export function checkSkill(skillDir: string, snapshot: Snapshot): Result {
     }
   }
 
-  // 6. Coverage: every canon verb, the mount verb and every root are taught.
+  // 6. Coverage: every canon verb, the mount verb, every root and every contract file are taught.
   const texts = tokens.map((t) => t.text);
+  for (const f of fileNames) check(texts.includes(f), `the skill never names the contract file \`${f}\``);
   for (const f of authoring.families) check(texts.some((s) => s.startsWith(`vault.${f}.put`)), `the skill never teaches \`vault.${f}.put\``);
   for (const m of authoring.methods) check(texts.some((s) => s.startsWith(`.${m}(`) || new RegExp(`^vault\\.\\w+\\.${m}\\b`).test(s)), `the skill never teaches the \`.${m}\` method`);
   const reimport = `vault.${authoring.reimport.family}.${authoring.reimport.method}()`;
