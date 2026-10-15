@@ -38,6 +38,23 @@ The first folders are manifests for the seat packs (`packs/claude-seat`, `packs/
 
 `packs/crm` is the relationship-pipeline pack: nine skills a campaign agent loads at one moment of work (intake, outbound, replies, calls, deliverability, research interviews, lifecycle, accounts, measurement), a voice floor, dated defaults and platform facts, and two presets (consultancy, creator program). Its `PACK.md` names the engine work it waits on.
 
+`skills/customize-oneiron` is the guide an agent loads to change a vault: the three hub folder contracts, the authoring verbs, lenses, restore defaults and the mount. A check keeps it equal to the contract data. Its `NOTES.md` lists the engine work it waits on.
+
+## Checks
+
+```
+bun run check
+```
+
+This runs `scripts/check-customize-contracts.ts` and its tests. The check fails when `skills/customize-oneiron` names a hub kind, a field, a folder part or a verb that the contract data and canon do not carry, or leaves one out.
+
+The contract data lives in oneiron-docs, which is private. `scripts/contracts/hub-folder-contracts.json` is a generated snapshot of it, with the docs commit and a hash. Never edit it by hand. With an oneiron-docs checkout:
+
+```
+bun scripts/check-customize-contracts.ts --docs <oneiron-docs>           # also fails if the snapshot drifted
+bun scripts/check-customize-contracts.ts --docs <oneiron-docs> --write   # regenerate it, then fix the skill until the check passes
+```
+
 ## License
 
 Apache-2.0, the same as the engine.
