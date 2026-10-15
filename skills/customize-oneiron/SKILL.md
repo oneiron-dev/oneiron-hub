@@ -1,6 +1,6 @@
 ---
 name: customize-oneiron
-description: "Change an Oneiron vault through its real contracts. Write, fork, archive, export and restore skills, packs, agent packs, hooks, lenses and artifacts, through the SDK verbs or as folders on the mount. Load it when a person or an agent wants to add, change, share, remove or restore any of these."
+description: "Change an Oneiron vault through its real contracts. Write, fork, archive, export and restore skills, packs, agent packs, hooks, lenses and artifacts. Use the SDK verbs, or write folders on the mount. Load it when a person or an agent wants to add, change, share, remove or restore any of these."
 version: 0.1.0
 license: Apache-2.0
 metadata:
@@ -15,17 +15,17 @@ metadata:
 
 You change a vault by writing folders. A hub serves three kinds of folder. The vault has two more families of its own, lenses and artifacts. All five take the same verbs. The engine hashes every folder, and the hash is its identity.
 
-This page gives you the contracts, the verbs and the rules. The tables below are the whole contract. A field they do not name is not in the contract, so do not write it. [NOTES.md](NOTES.md) says which verbs today's engine runs. Check it before you promise a person that something works now.
+This page holds the contracts, the verbs and the rules. The tables are the whole contract. Write only the fields they name. [NOTES.md](NOTES.md) says which verbs today's engine runs. Read it before you tell a person that something works now.
 
 ## Three hub kinds
 
 | kind | manifest | what it is |
 |---|---|---|
 | `skill` | `SKILL.md` | One skill: plain-English instructions, with small scripts and references. |
-| `pack` | `PACK.md` | How a platform or a capability plugs into a vault: the permissions it asks for, its wakes, its adapter, its hooks and the skills that ride it. |
+| `pack` | `PACK.md` | How a platform or a capability plugs into a vault. It names the permissions it asks for, its `wakes`, its `adapter`, its `hooks` and the skills that ride it. |
 | `agent_pack` | `PACK.md` | A whole agent as a folder: identity, policy, skill refs and starting knowledge. |
 
-A hub carries these three kinds and nothing else. Lenses, artifacts and hooks are not hub kinds. Never add a fourth kind.
+A hub carries these three kinds and nothing else. Lenses and artifacts are vault families. Hooks live inside packs. Never add a fourth kind.
 
 ## The verbs
 
@@ -42,22 +42,22 @@ A hub carries these three kinds and nothing else. Lenses, artifacts and hooks ar
 | `vault.skills.restoreDefaults()` | Re-imports a deleted or changed default skill from its pinned source. |
 | `mount(ref)` | Opens the vault as one file tree. A folder written there is the same put. |
 
-Each family takes `.fork(h)`, `.archive(h)` and `.export(h)`: `vault.skills`, `vault.packs`, `vault.agents`, `vault.lenses` and `vault.artifacts`.
+Every family takes `.fork(h)`, `.archive(h)` and `.export(h)`. The families are `vault.skills`, `vault.packs`, `vault.agents`, `vault.lenses` and `vault.artifacts`.
 
 ### What happens on put
 
-1. The engine hashes the folder. Same bytes, one object: two hubs that serve the same bytes give one object with two source rows.
-2. It installs at once after the fit check, with a receipt. A skill with no code lands Active. A hit on the rules, or code while the vault's code flag is off, lands it Candidate. The card says why.
-3. The permissions the folder asks for go through the same fit check. A confident, reversible grant lands granted, with one-tap undo. An unsure or irreversible one asks the person on the card, in plain words. A rules hit blocks the ask: a removed hash, a known-bad pattern, a secret-shaped string, a call outside the sandbox.
+1. The engine hashes the folder. Same bytes make one object. Two hubs that serve the same bytes give one object with two source rows.
+2. The fit check runs, then the folder installs at once with a receipt. A skill with no code lands Active. A rules hit lands it Candidate. Code while the vault's code flag is off lands it Candidate too. The card says why.
+3. The permissions the folder asks for go through the same fit check. A confident, reversible grant lands granted, with one-tap undo. An unsure or irreversible grant asks the person on the card, in plain words. A rules hit blocks the ask. The rules catch a removed hash, a known-bad pattern, a secret-shaped string and a call outside the sandbox.
 4. A pack with code and a wire also passes the qualification suite, the grant slate and the advisory check. It asks again whenever it changes.
-5. An update that widens what the folder may do asks the person again. A doc-only or narrower update flows on its own.
+5. An update that widens what the folder may do asks the person again. A doc-only or narrower update installs on its own.
 6. Trust tier changes how the card reads. It never decides whether a folder may install.
 
 ### Edit means fork
 
-Editing an installed folder forks it. The fork remembers its parent. Upstream updates stop arriving on their own. They come as proposals, and accepting one merges the upstream changes into the fork. One fork law serves skills, packs and agents.
+Editing an installed folder forks it. The fork remembers its parent. Upstream updates stop arriving on their own. They arrive as proposals. Accepting a proposal merges the upstream changes into the fork. One fork rule serves skills, packs and agents.
 
-To replace a shipped or imported object, fork it. To retire one, archive it. Delete is not an authoring verb. It is erasure by the person, through their own path, with a receipt. Never delete for them, and never delete to tidy up.
+To replace a shipped or imported object, fork it. To retire one, archive it. There is no delete verb for authoring. Deletion belongs to the person. They erase through their own route, and the engine writes a receipt. Never delete for them, and never delete to tidy up.
 
 ### Export
 
@@ -93,10 +93,10 @@ metadata:
 
 Rules for a skill folder:
 
-- Bump the version on any change.
+- Bump `version` on any change.
 - No secrets, no vault text, no personal data.
 - No network by default.
-- If the skill needs an engine mechanism that has not shipped, it belongs in the engine, not in a hub. Name the gap in the folder's notes. Never fake it.
+- A skill that needs an engine mechanism that has not shipped belongs in the engine, not in a hub. Name the gap in the folder's notes. Never fake it.
 
 ## Pack folder: PACK.md
 
@@ -137,10 +137,10 @@ contact: "contact@example.org for removal or defect requests"
 Rules for a pack folder:
 
 - Never a credential. The engine injects grants at run time.
-- Bump the version on any change.
+- Bump `version` on any change.
 - No secrets, no vault text, no personal data. The engine scans every decoded frontmatter value for secrets, and `contact` too.
 - A pack with no verbs, no wire and no section installs like a skill. Its permissions are the widening, never the install.
-- Keep the pack's name, predicates and kinds out of every namespace the engine owns. Install refuses a pack that takes one.
+- Keep the pack's `name`, predicates and kinds out of every namespace the engine owns. Install refuses a pack that takes one.
 
 ### Hooks
 
@@ -153,11 +153,11 @@ A hook lives in its own folder under `hooks/`. It holds three files:
 How hooks work:
 
 - Write a hook with `vault.packs.put`. There is no verb family for hooks.
-- List each hook under `hooks` in the PACK.md. Install turns each one into a code entity plus the claim that binds it.
+- List each hook under `hooks` in `PACK.md`. Install turns each one into a code entity plus the claim that binds it.
 - A `wakes` entry is a hook with no body. One runner serves both keys.
 - Every vault has one pack named local, of kind `capability`. Vault open creates it. The owner's own hooks go there. It never publishes to a hub.
 - Write a hook only when the owner asks for one. The ask is the consent.
-- Hooks are designed, not built. Today's engine refuses a PACK.md that carries `hooks`, so a pack with hooks does not install yet.
+- Hooks are designed, not built. Today's engine refuses a `PACK.md` that carries `hooks`. A pack with hooks does not install yet.
 
 ## Agent pack folder: PACK.md
 
@@ -181,10 +181,10 @@ How hooks work:
 Rules for an agent pack:
 
 - Keys and signatures never go in the folder.
-- Bump the version on any change.
+- Bump `version` on any change.
 - No secrets, no vault text, no personal data.
-- An agent pack carries none of a pack's runtime fields: no `grants`, `wakes`, `adapter`, `migrations` or `hooks`.
-- Do not write an agent pack by hand. Write the agent with `vault.agents.put`, then take its pack with `vault.agents.export(h)`. The export writes the files in the form the engine checks.
+- An agent pack carries none of a pack's runtime fields. Leave out `grants`, `wakes`, `adapter`, `migrations` and `hooks`.
+- Write the agent with `vault.agents.put`, then take its pack with `vault.agents.export(h)`. The export writes the files in the form the engine checks. Never write an agent pack by hand.
 - Editing an installed agent pack forks it.
 
 ### Agents in the vault
@@ -196,12 +196,12 @@ Rules for an agent pack:
 ## So the engine parses it
 
 - Write the frontmatter between two lines of three dashes. One key per line. Each key once.
-- In a PACK.md, indent nothing. Write `grants` and `wakes` as a JSON array of strings on one line. Write `migrations` as a JSON array of maps on one line.
-- In a SKILL.md, `metadata` may hold one level of lines indented by two spaces. Each one is a key, a colon and a plain value.
-- Quote a value as a JSON string when it holds an apostrophe or any of & * ! { [ | > #. When in doubt, quote.
+- In a `PACK.md`, indent nothing. Write `grants` and `wakes` as a JSON array of strings on one line. Write `migrations` as a JSON array of maps on one line.
+- In a `SKILL.md`, `metadata` may hold one level of lines indented by two spaces. Each line is a key, a colon and a plain value.
+- Quote a value as a JSON string when it holds an apostrophe. Quote it too when it holds any of & * ! { [ | > #. When in doubt, quote.
 - A connector pack needs an `adapter`. A script adapter's path starts with `scripts/`.
-- The engine reads a pack's name as author-scoped and lowercase: the author, a dot, then lowercase letters, digits, dashes or underscores. [NOTES.md](NOTES.md) says how this hub names the folder.
-- Today's engine reads some keys the contract does not name, and the agent pack check needs one of them. [NOTES.md](NOTES.md) lists them. Keep them out of a hub folder until the contract carries them.
+- The engine reads a pack's `name` as author-scoped and lowercase. It is the author, a dot, then lowercase letters, digits, dashes or underscores. [NOTES.md](NOTES.md) says how this hub names the folder.
+- Today's engine reads some keys the contract does not name. The agent pack check needs one of them. [NOTES.md](NOTES.md) lists them. Keep them out of a hub folder until the contract carries them.
 
 ## Lenses: a vault object, not a hub kind
 
@@ -210,22 +210,22 @@ A lens is a view the workbench mounts. In this version a lens is written code. T
 - Write a lens with `vault.lenses.put(folder)`, or as a folder under `lenses/` on the mount. Fork, archive and export it like anything else.
 - A lens reads. It never writes. Lens code has no write host-imports. A change a lens offers goes through the host, under the normal write rules.
 - A lens builds on the public atom kit, its tokens and the apps design contract.
-- A lens keeps its intent prompt in the vault, so it regenerates when the shell upgrades.
+- A lens keeps its intent prompt in the vault. The prompt regenerates the lens when the shell upgrades.
 - A lens exists only while its pack is installed. The vault lens and the admin lens are always there.
 - To share a lens, ship it with a pack. A pack that holds only a lens is a personal view, private by default. Sharing the view publishes that pack.
-- The pack contract has no lens part yet. Do not add a lens folder or a lens field to a hub pack, and never make lenses a hub kind. That needs a ruling first.
+- The pack contract has no lens part yet. Add no lens folder and no lens field to a hub pack. Never make lenses a hub kind. Each of these needs a ruling first.
 - How lenses ride packs is still tentative. The UI co-design sessions decide it.
 
 ## Artifacts
 
-`vault.artifacts.put(folder)` writes an artifact. Fork, archive and export work as for the others. Artifacts are not a hub kind, and the mount names no folder for them.
+`vault.artifacts.put(folder)` writes an artifact. Fork, archive and export work as for the others. Artifacts are not a hub kind. The mount names no folder for them.
 
 ## Restore defaults
 
 The defaults are the shipped skills. The engine carries four of them: the improver, the judge, goal intake and the wake recipe. Every other default comes from this hub, at a pinned ref.
 
-- `vault.skills.restoreDefaults()` re-imports a deleted or changed default from its pinned source. It is a fresh import with the same content hash, and it passes the same admission as any import.
-- Use it when a person deleted a default and wants it back, or changed one and wants the shipped bytes again.
+- `vault.skills.restoreDefaults()` re-imports a deleted or changed default from its pinned source. It is a fresh import with the same content hash. It passes the same admission as any import.
+- Use it when a person deleted a default and wants it back. Use it when they changed one and want the shipped bytes again.
 - An archived default comes back from the archive view, not through restore.
 
 ## The mount
@@ -235,14 +235,14 @@ The defaults are the shipped skills. The engine carries four of them: the improv
 - A read is a path. The engine resolves it as a scoped query when you walk it. Nothing materializes.
 - A write is one put per path. A folder written under `skills/`, `packs/`, `agents/` or `lenses/` is the same put that `vault.<kind>.put(folder)` makes. The engine hashes the folder on save and lands it Active or Candidate by the rules above.
 - In scope, the write lands at once with a receipt. Out of scope, it asks the owner and waits for the word.
-- A git push is the same write. The vault is already the origin, so pushed files become ops under the pusher.
+- A git push is the same write. The vault is the origin. Pushed files become ops under the pusher.
 
 ## Publish to a hub
 
 A vault reads oneiron-dev/oneiron-hub as its first hub, at pinned refs. Any git repository or static JSON index can be a hub.
 
 - Put the folder in the hub at `skills/<name>/`, `packs/<name>/` or `agents/<name>/`, under the contract above.
-- Bump the version on every change. A vault reads each hub ref under its own sync policy. The engine pins this hub at a reviewed commit, so a change here reaches vaults only when that pin moves.
+- Bump `version` on every change. A vault reads each hub ref under its own sync policy. The engine pins this hub at a reviewed commit. A change here reaches vaults only when that pin moves.
 - A folder that pulls in something from another hub never inherits that hub's trust.
 
 ## You slip here
@@ -250,11 +250,11 @@ A vault reads oneiron-dev/oneiron-hub as its first hub, at pinned refs. Any git 
 - You call lenses, hooks or artifacts a hub kind. A hub has three kinds.
 - You add a field the tables do not name.
 - You look for a hooks verb. Hooks ride `vault.packs.put`.
-- You change a file and keep the version.
-- You indent a PACK.md, or write a list across lines.
+- You change a file and leave `version` as it was.
+- You indent a `PACK.md`, or write a list across lines.
 - You hand-write an agent pack. Export it instead.
 - You delete for the person, or to tidy up. Archive instead. Deletion is theirs.
-- You edit an installed folder and expect upstream updates to keep flowing. The edit forked it, so updates now come as proposals.
+- You edit an installed folder and expect upstream updates to keep coming. The edit forked it. Updates now come as proposals.
 - You put a credential, a key, a signature, vault text or personal data in a folder.
 - You expect a pack with `hooks` to install today.
 - You tell a person a verb works today without checking [NOTES.md](NOTES.md).
