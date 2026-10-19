@@ -40,6 +40,8 @@ The first folders are manifests for the seat packs (`packs/claude-seat`, `packs/
 
 `skills/customize-oneiron` is the guide an agent loads to change a vault: the three hub folder contracts, the authoring verbs, lenses, restore defaults and the mount. A check keeps it equal to the contract data. Its `NOTES.md` lists the engine work it waits on.
 
+`skills/weave-digest-settings` is a Coach skill. It reads one owner's weave digest readings and words, and proposes at most one step: a new cadence or a new lead section. The engine decides whether that step applies now or waits for the owner. Without it, the engine's closed-form rule runs.
+
 ## Checks
 
 ```
