@@ -1,14 +1,14 @@
 ---
 name: outbound-and-follow-up
 description: Draft the first touch, the bumps and the sequence for a campaign member, in the member's own channel, from a real trigger, inside the voice floor. Set the review posture, the arms and the chase cadence. Every send rides the gate.
-version: 0.1.0
+version: 0.1.1
 license: Apache-2.0
 metadata:
   author: oneiron-dev
   contact: contact@oneiron.dev
   pack: oneiron.crm
   loads-when: you draft a touch, a bump or a sequence, or set a campaign's send posture
-  data: references/templates.md, ../../knowledge/voice-floor.md, ../../knowledge/defaults.md, ../../knowledge/platform-facts.md
+  data: references/templates.md, ../../knowledge/voice-floor.md, ../../knowledge/defaults.md, ../../knowledge/platform-facts.md, ../outreach/SKILL.md
 ---
 
 # Outbound and follow-up
@@ -39,7 +39,7 @@ Any author may write the whole mail: a model, a human, or a model edited by a hu
 
 ## Procedure: the sequence
 
-- Five to eight touches with widening gaps and a defined end. Date any reply statistic you quote.
+- Five to eight touches across channels, with widening gaps and a defined end. The automated email part is three emails per non-responder by default, on days 0, 4 and 10 (`../outreach/practice/follow-ups.md`); LinkedIn notes and calls make up the rest. Date any reply statistic you quote.
 - Bump on the same thread with one new sentence of value. Never a new essay on the same angle. Late in the sequence a short "any thoughts?" works.
 - Offer an asset instead of asking for time: a short teardown, a benchmark, a diagnosis of their own thing.
 - Run several channels, but let real engagement triggers time any call. A same-day call, voicemail and email can work; the voicemail points at the email and never begs a callback. With no trigger and no phone craft, email plus a human-sent LinkedIn note beats cold dialling.
@@ -62,7 +62,7 @@ Run follow-up off the record's clock, not memory. Nudges fire at set day offsets
 
 ## Channels
 
-- Email: the default for a verified B2B contact with basis.
+- Email: the default for a verified B2B contact with basis. The sending values (volume, ramp, gap, windows, format) are in `../outreach/practice/`; the consent class per country is in `../outreach/law/`.
 - Platform DMs: inside the postures in `platform-facts.md`. Instagram through the approved API. X low-rate and human-gated. Reddit public replies only.
 - LinkedIn: the agent drafts, a human sends from their own session. Pace like a person reading. Nothing connects to their account.
 - Crossing channels needs evidence on the member claim. They shared an email, asked to move, booked a call.
@@ -89,7 +89,7 @@ Automate what widens reach: list building, research, the clock, the arm tags. Ke
 - The trigger is real and inside its decay window.
 - The arm tag and the sender ref are on the send.
 - The member's channel set includes this channel with basis.
-- You know which rule rows the gate will apply: the recipient's jurisdiction, or the strict pole when it is unknown. A stale row blocks at the gate; re-verify it, or propose and expect the block.
+- You read the recipient's law file (`../outreach/law/<country>.md`), or the strict pole's when the country is unknown. A stale fact is marked, not a block. Any departure from a default carries the owner's override line.
 
 ## You slip here
 

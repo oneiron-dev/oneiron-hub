@@ -4,6 +4,8 @@ Every number a skill in this pack uses, in one place. A default is a starting va
 
 Canon ids point at ARCH-0059, the campaign loop (rulings of 2026-07-16). Provider pages were read on 2026-10-15; `platform-facts.md` holds the fuller rows.
 
+Email sending values (volume, ramp, gap, windows, the automated email cadence, complaint and bounce lines, verification, warm-up) live in the `outreach` skill's `defaults.json`, with sources, checked 2026-10-21. Where a row below overlaps one of those, the row says so and the outreach record is the one to read. Every value in both places is a default the owner can override; the override line records the reason.
+
 ## Triggers, snooze and recovery
 
 | area | default | source class | source | dated |
@@ -28,12 +30,12 @@ Canon ids point at ARCH-0059, the campaign loop (rulings of 2026-07-16). Provide
 | area | default | source class | source | dated |
 |---|---|---|---|---|
 | hand-built first list | 50 to 100 targets before buying any list | practice | pack authors' practice, written 2026-08, re-read 2026-10-15 | 2026-10-15 |
-| touches in a cold sequence | 5 to 8, with widening gaps and a defined end | practice | pack authors' practice, written 2026-08, re-read 2026-10-15 | 2026-10-15 |
+| touches in a cold sequence, across channels | 5 to 8, with widening gaps and a defined end; the automated email part is 3 per non-responder on days 0, 4 and 10 (outreach `sending.defaults.follow_up_cadence`) | practice | pack authors' practice, written 2026-08, re-read 2026-10-15; outreach record 2026-10-21 | 2026-10-21 |
 | sends per variant before a read, founder volume | at least 20 | practice | pack authors' practice, written 2026-08, re-read 2026-10-15 | 2026-10-15 |
 | sends per variant before a read, volume mode | 500 to 1,000 | practice | pack authors' practice, written 2026-08, re-read 2026-10-15 | 2026-10-15 |
 | no-change window per channel test | 90 days | practice | pack authors' practice, written 2026-08, re-read 2026-10-15 | 2026-10-15 |
-| sends per mailbox per day, volume mode | about 30 | practice | pack authors' practice, written 2026-08, re-read 2026-10-15 | 2026-10-15 |
-| one follow-up in volume mode | at +2 days | practice | pack authors' practice, written 2026-08, re-read 2026-10-15 | 2026-10-15 |
+| sends per mailbox per day | 20 campaign messages per rolling 24 hours at steady state, follow-ups included, after a 5-10-15-20 ramp (outreach `sending.defaults.per_inbox_daily_volume`); 30 was the earlier practice value and is one vendor's recommendation | practice, sourced | outreach record 2026-10-21 (Clay, Instantly, Google sender guidelines) | 2026-10-21 |
+| automated email follow-ups | on calendar days 4 and 10 after touch one (outreach); +2 days was the earlier practice value | practice, sourced | outreach record 2026-10-21 | 2026-10-21 |
 | funnel email spine | about 7 after opt-in, 4 before a call, 5 after a call | practice | pack authors' practice, written 2026-08, re-read 2026-10-15 | 2026-10-15 |
 | first reply to warm inbound on a proven offer | within minutes, in a human register | practice | pack authors' practice, written 2026-08, re-read 2026-10-15 | 2026-10-15 |
 
