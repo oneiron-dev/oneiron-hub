@@ -1,7 +1,7 @@
 ---
 name: oneiron.crm
-description: "Relationship pipeline for a vault: standing campaigns over people, from signal to reply to deal, with every send behind the gate and the law as rule rows."
-version: 0.1.0
+description: "Relationship pipeline for a vault: standing campaigns over people, from signal to reply to deal. The law per country, the channel and platform rules and the sending values ride it as defaults with sources and checked dates; the owner can override any of them, with the reason on the record."
+version: 0.2.0
 license: Apache-2.0
 kind: capability
 grants: ["claims.write: the campaign, membership, fit, stage, reply, bounce, suppression and jurisdiction claim families the engine assigns this pack, on PERSON and ORG entities in the campaign's project", "entities.read: PERSON, ORG, EVENT and SESSION entities, relationship claims and prior message threads in the campaign's project", "saved_query.run: standing queries over the project, with judge spend under the vault's eval budget", "enrichment.call: the vault's enrichment providers in cost order, free registries first, paid lookups only after a cost flag", "outbound.propose: email and platform-DM sends on the vault's connected channel identities, through the dispatch gate; never a LinkedIn send", "compliance.read: the compliance rule rows (the engine's seed rows now; the hub compliance pack's rows when it ships) and each recipient's jurisdiction claim", "proposals.write: campaign launch, per-lead review, stage dials and suppression tightening; any loosening waits for the owner's stamp"]
@@ -11,7 +11,9 @@ contact: "legal@oneiron.dev for removal requests, contact@oneiron.dev for everyt
 
 # crm
 
-This pack runs relationships as standing programs over people. The vault is the record. A campaign never owns its people; it works them. Stage is earned by evidence, never by a score or an open. Every outbound send rides the dispatch gate. The law lives as rule rows: the engine ships seed rows, and the hub compliance pack will extend them. This pack reads them before any send.
+This pack runs relationships as standing programs over people. The vault is the record. A campaign never owns its people; it works them. Stage is earned by evidence, never by a score or an open. Every outbound send rides the dispatch gate.
+
+The law and the sending rules live here as defaults. The `outreach` skill carries 18 countries, five channels each, as facts with sources and checked dates; the receiving providers' rules; the sending services' terms; the vendors' numbers; and the loop's own starting values. Every one of them is a default the loop starts from. The owner, or his agent within its grant, can override any of them. The override is a line in the record: who, when, which default, the reason, the stated exposure. None of them is a guardrail, a block or a gate. The engine's seed compliance rows (`crm.compliance.v1`) carry the same facts in the gate's shape for six jurisdictions.
 
 ## The campaign grammar
 
@@ -47,7 +49,8 @@ Each skill loads at one moment of work. Read the one for the moment you are in.
 | `outbound-and-follow-up` | you draft a first touch, a bump or a sequence, or set the review posture for a campaign's sends |
 | `replies-and-objections` | a reply lands: code it, answer it, book the next step, or suppress |
 | `discovery-to-close` | a human runs the call, the demo, the proposal, the negotiation and the close |
-| `deliverability-and-opt-out` | you set up a sender, read sender health, handle a bounce or an opt-out, or check the law before a send |
+| `deliverability-and-opt-out` | you set up a sender, read sender health, handle a bounce or an opt-out, or read the law before a send |
+| `outreach` | you prepare a list, pick a channel, set up or ramp a sender, change volume, see a provider incident, meet a recipient in a new country, or record an override: the router to the law per country, the channel and platform rules, the sending defaults, `keeping-current.md` and `add-your-country.md` |
 | `research-interviews` | the campaign recruits people to learn from, or pre-sells an offer that does not exist yet |
 | `lifecycle-and-retention` | a product's users need activation, nudges, win-back or a cancel flow |
 | `accounts-and-expansion` | a paying account needs onboarding, a health read, a review, a renewal, an expansion or a referral ask |
@@ -59,7 +62,10 @@ Each skill loads at one moment of work. Read the one for the moment you are in.
 |---|---|
 | `knowledge/voice-floor.md` | the floor every outbound message keeps; the reviewer reads it beside the campaign's voice guide |
 | `knowledge/defaults.md` | every numeric default the skills use, dated, with its source class |
-| `knowledge/platform-facts.md` | provider thresholds and per-platform postures, each with a verified date |
+| `knowledge/platform-facts.md` | provider thresholds and per-platform postures, each with a verified date; the `outreach` skill's `platforms/` files carry the fuller, newer rows |
+| `knowledge/kinds-and-claims.md` | the kinds and claim families the pack uses: CAMPAIGN, SAVED_QUERY, membership, fit, stage, the comm claims, the jurisdiction claim |
+| `knowledge/lenses.md` | the two lenses the pack expects, pipeline and campaign board: what each reads; a spec, since lenses are a vault family |
+| `skills/outreach/defaults.json` | every outreach default as a record: 90 law records, 17 sending values, 6 channels, 20 platforms, each with sources, a checked date and an override note |
 | `knowledge/presets/consultancy.md` | the consultancy preset: a stage ladder, templates, a retainer rhythm, an interview campaign |
 | `knowledge/presets/creator-program.md` | the creator-program preset: a trial ladder, payout rules, comms and the disclosure floor |
 
@@ -70,7 +76,8 @@ Each skill loads at one moment of work. Read the one for the moment you are in.
 - **The ramp.** A new sender scope starts with every send proposed for a human stamp. It graduates to a standing grant when the ramp earns it.
 - **Per-lead review.** Approve or reject at the cohort-to-campaign boundary is a dial on the propose lane, never the default. The consent point stays at the send.
 - **A/B arms.** Campaigns test copy variants on their outcome metric: model against model, model against human. Arm tags ride the send; coded replies close the loop.
-- **Stop-loss.** The sender-health defaults in `knowledge/defaults.md` cut volume or bench a sender. Tightening applies at once with a notice. Loosening waits for the owner.
+- **Stop-loss.** The sender-health defaults in `knowledge/defaults.md` cut volume or bench a sender. Tightening applies at once with a notice. Loosening is an override: the owner, or his agent within its grant, records it with the reason.
+- **Overrides.** Any default in this pack can be overridden for a campaign, a sender, a recipient class or the vault. The override line records who, when, the default key, the old and new values, the reason, the stated exposure and the scope. An override changes what the loop does. It does not change a statute, a provider's terms or a recipient's own stop request. `skills/outreach/add-your-country.md` lists the common cases.
 
 ## What it never does
 
@@ -81,7 +88,7 @@ Each skill loads at one moment of work. Read the one for the moment you are in.
 - Never deletes a suppressed person. The minimal row stays so they are never contacted again.
 - Never moves a stage on a score, an open or a click.
 - Never spends a paid credit silently. Free first, then a cost flag, then the paid call.
-- Never sends on a stale rule row. A missing or unknown jurisdiction is not a refusal: the gate judges the send under the strict pole's rows. A row past its verified date blocks until it is re-verified.
+- Never hides a stale fact. A law or platform fact past its recheck cadence is marked stale and the owner is told; the send proceeds on the recorded default or the owner's override. A missing or unknown jurisdiction is not a refusal: the loop starts from the strict pole's defaults, and `skills/outreach/add-your-country.md` says how to write the country's file.
 
 ## The floor every skill keeps
 
@@ -99,6 +106,6 @@ Each skill loads at one moment of work. Read the one for the moment you are in.
 
 ## Requires
 
-The campaign loop, saved queries and the claim families the engine assigns this pack. The engine's seed compliance rows (`crm.compliance.v1`: UK, JP, EU, Germany, France, US), which the hub compliance pack will extend later. A host sender on the engine's outbound transport. Until the engine ships the pack install route, this folder is content and a manifest.
+The campaign loop, saved queries and the claim families the engine assigns this pack. The engine's seed compliance rows (`crm.compliance.v1`: UK, JP, EU, Germany, France, US); the `outreach` skill extends them as defaults for 18 countries. A host sender on the engine's outbound transport. The engine's owner install route (`POST /v1/owner/packs`) installs this folder; install from a hub at a pinned ref is not built.
 
-**Not built yet, named so nothing here fakes it.** The inbound-submission path that accepts a form before enrichment. The lead-score test harness. The EVENT-to-calendar mapping for booked calls. The judge reviewer bound to the dispatch gate as a posture. A send-mode input to the compliance gate: canon draws "missing List-Unsubscribe" as a block on every send, so the per-mode opt-out shape (a header on bulk, a plain line on one-to-one mail) waits on a canon re-rule and that input. Per-platform posture rows in the engine seed. Pack install from a hub at a pinned ref. Each is engine or canon work; the skills say what they do without it.
+**Not built yet, named so nothing here fakes it.** The inbound-submission path that accepts a form before enrichment. The lead-score test harness. The EVENT-to-calendar mapping for booked calls. The judge reviewer bound to the dispatch gate as a posture. Two inputs to the compliance gate: a send-mode input (a header on bulk, a plain line on one-to-one mail) and an override input that carries the owner's override line and its reason. Engine main's gate still blocks a send that lacks an opt-out element or sits on a stale row; the owner's ruling of 22 October 2026 makes every such row a default with an override, and canon (ARCH-0059 §8) is rewritten to it in the Docs lane. Per-platform posture rows in the engine seed. The two lenses in `knowledge/lenses.md` and any saved-query helper script: the lens family and the SDK verbs they would write against are engine work, so this folder carries their spec and no code. Each is engine or canon work; the skills say what they do without it.
