@@ -13,7 +13,8 @@
         "cost": {
           "input_per_million": "0.7000000",
           "output_per_million": "1.4000000",
-          "cache_read_per_million": "0.18000000"
+          "cache_read_per_million": "0.18000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -48,7 +49,8 @@
         "max_output_tokens": 65535,
         "cost": {
           "input_per_million": "0.3000000",
-          "output_per_million": "2.5000000"
+          "output_per_million": "2.5000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -84,7 +86,8 @@
         "max_output_tokens": 4096,
         "cost": {
           "input_per_million": "2.5000000",
-          "output_per_million": "5.000000"
+          "output_per_million": "5.000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -119,7 +122,8 @@
           "input_per_million": "10.00000",
           "output_per_million": "50.00000",
           "cache_read_per_million": "0.25000000",
-          "cache_write_per_million": "12.5000000"
+          "cache_write_per_million": "12.5000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -157,7 +161,8 @@
         "cost": {
           "input_per_million": "0.25000000",
           "output_per_million": "0.8000000",
-          "cache_read_per_million": "0.06000000"
+          "cache_read_per_million": "0.06000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -192,7 +197,8 @@
         "max_output_tokens": 16000,
         "cost": {
           "input_per_million": "0.42000000",
-          "output_per_million": "1.25000000"
+          "output_per_million": "1.25000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -227,7 +233,8 @@
         "cost": {
           "input_per_million": "0.1000000",
           "output_per_million": "0.2000000",
-          "cache_read_per_million": "0.1000000"
+          "cache_read_per_million": "0.1000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -261,7 +268,8 @@
         "max_output_tokens": 235929,
         "cost": {
           "input_per_million": "0.5000000",
-          "output_per_million": "2.5000000"
+          "output_per_million": "2.5000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -298,7 +306,8 @@
         "max_output_tokens": 8192,
         "cost": {
           "input_per_million": "0.2000000",
-          "output_per_million": "0.9000000"
+          "output_per_million": "0.9000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming"
@@ -330,7 +339,8 @@
         "max_output_tokens": 64000,
         "cost": {
           "input_per_million": "0",
-          "output_per_million": "0"
+          "output_per_million": "0",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -366,7 +376,8 @@
         "cost": {
           "input_per_million": "0.15000000",
           "output_per_million": "0.6000000",
-          "cache_read_per_million": "0.003000000"
+          "cache_read_per_million": "0.003000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -403,7 +414,8 @@
         "max_output_tokens": 460800,
         "cost": {
           "input_per_million": "0",
-          "output_per_million": "0"
+          "output_per_million": "0",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -442,7 +454,8 @@
           "input_per_million": "0.75000000",
           "output_per_million": "3.75000000",
           "cache_read_per_million": "0.075000000",
-          "cache_write_per_million": "0.0416666666666667000000"
+          "cache_write_per_million": "0.0416666666666667000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -479,7 +492,8 @@
         "max_output_tokens": 3686,
         "cost": {
           "input_per_million": "0.08000000",
-          "output_per_million": "0.11000000"
+          "output_per_million": "0.11000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -513,7 +527,8 @@
         "cost": {
           "input_per_million": "0.06000000",
           "output_per_million": "0.25000000",
-          "cache_read_per_million": "0.015000000"
+          "cache_read_per_million": "0.015000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -550,7 +565,8 @@
         "cost": {
           "input_per_million": "0.04000000",
           "output_per_million": "0.15000000",
-          "cache_read_per_million": "0.004000000"
+          "cache_read_per_million": "0.004000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -587,7 +603,8 @@
         "cost": {
           "input_per_million": "0.06000000",
           "output_per_million": "0.18000000",
-          "cache_read_per_million": "0.012000000"
+          "cache_read_per_million": "0.012000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -625,7 +642,8 @@
         "cost": {
           "input_per_million": "0.03000000",
           "output_per_million": "0.15000000",
-          "cache_read_per_million": "0.03000000"
+          "cache_read_per_million": "0.03000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -659,7 +677,8 @@
         "cost": {
           "input_per_million": "0.74000000",
           "output_per_million": "2.96000000",
-          "cache_read_per_million": "0.15000000"
+          "cache_read_per_million": "0.15000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -694,7 +713,8 @@
         "max_output_tokens": 8192,
         "cost": {
           "input_per_million": "0",
-          "output_per_million": "0"
+          "output_per_million": "0",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -730,7 +750,8 @@
         "max_output_tokens": 6000,
         "cost": {
           "input_per_million": "0.4000000",
-          "output_per_million": "0.75000000"
+          "output_per_million": "0.75000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming"
@@ -763,7 +784,8 @@
         "cost": {
           "input_per_million": "0.3000000",
           "output_per_million": "1.2000000",
-          "cache_read_per_million": "0.006000000"
+          "cache_read_per_million": "0.006000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -799,7 +821,8 @@
         "cost": {
           "input_per_million": "0.1000000",
           "output_per_million": "0.2000000",
-          "cache_read_per_million": "0.002000000"
+          "cache_read_per_million": "0.002000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -836,7 +859,8 @@
         "max_output_tokens": 16384,
         "cost": {
           "input_per_million": "0.18000000",
-          "output_per_million": "0.18000000"
+          "output_per_million": "0.18000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -869,7 +893,8 @@
         "max_output_tokens": 14745,
         "cost": {
           "input_per_million": "0.07000000",
-          "output_per_million": "0.14000000"
+          "output_per_million": "0.14000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -903,7 +928,8 @@
         "cost": {
           "input_per_million": "0.3000000",
           "output_per_million": "1.2000000",
-          "cache_read_per_million": "0.06000000"
+          "cache_read_per_million": "0.06000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -940,7 +966,8 @@
         "max_output_tokens": 209715,
         "cost": {
           "input_per_million": "1.5000000",
-          "output_per_million": "7.5000000"
+          "output_per_million": "7.5000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -978,7 +1005,8 @@
         "cost": {
           "input_per_million": "2.1000000",
           "output_per_million": "10.95000000",
-          "cache_read_per_million": "0.23000000"
+          "cache_read_per_million": "0.23000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1015,7 +1043,8 @@
         "max_output_tokens": 131072,
         "cost": {
           "input_per_million": "0.9000000",
-          "output_per_million": "1.9000000"
+          "output_per_million": "1.9000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1048,7 +1077,8 @@
         "max_output_tokens": 235929,
         "cost": {
           "input_per_million": "0",
-          "output_per_million": "0"
+          "output_per_million": "0",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1080,7 +1110,8 @@
         "max_output_tokens": 117964,
         "cost": {
           "input_per_million": "1.000000",
-          "output_per_million": "3.000000"
+          "output_per_million": "3.000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1114,7 +1145,8 @@
         "cost": {
           "input_per_million": "0.07000000",
           "output_per_million": "0.2000000",
-          "cache_read_per_million": "0.04000000"
+          "cache_read_per_million": "0.04000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1152,7 +1184,8 @@
           "input_per_million": "10.00000",
           "output_per_million": "50.00000",
           "cache_read_per_million": "1.000000",
-          "cache_write_per_million": "12.5000000"
+          "cache_write_per_million": "12.5000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1189,7 +1222,8 @@
         "max_output_tokens": null,
         "cost": {
           "input_per_million": "0",
-          "output_per_million": "0"
+          "output_per_million": "0",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1226,7 +1260,8 @@
         "max_output_tokens": 8192,
         "cost": {
           "input_per_million": "0.15000000",
-          "output_per_million": "1.5000000"
+          "output_per_million": "1.5000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1261,7 +1296,8 @@
         "max_output_tokens": 8000,
         "cost": {
           "input_per_million": "3.000000",
-          "output_per_million": "15.000000"
+          "output_per_million": "15.000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1297,7 +1333,8 @@
         "cost": {
           "input_per_million": "0.09000000",
           "output_per_million": "0.18000000",
-          "cache_read_per_million": "0.009000000"
+          "cache_read_per_million": "0.009000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1332,7 +1369,8 @@
         "max_output_tokens": 32768,
         "cost": {
           "input_per_million": "0.075000000",
-          "output_per_million": "0.5000000"
+          "output_per_million": "0.5000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1371,7 +1409,8 @@
           "input_per_million": "2.000000",
           "output_per_million": "6.000000",
           "cache_read_per_million": "0.25000000",
-          "cache_write_per_million": "2.5000000"
+          "cache_write_per_million": "2.5000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1408,7 +1447,8 @@
         "max_output_tokens": 14745,
         "cost": {
           "input_per_million": "0.1000000",
-          "output_per_million": "0.1000000"
+          "output_per_million": "0.1000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1444,7 +1484,8 @@
         "max_output_tokens": 128000,
         "cost": {
           "input_per_million": "1.000000",
-          "output_per_million": "3.000000"
+          "output_per_million": "3.000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1479,7 +1520,8 @@
         "cost": {
           "input_per_million": "5.000000",
           "output_per_million": "30.00000",
-          "cache_read_per_million": "0.5000000"
+          "cache_read_per_million": "0.5000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1516,7 +1558,8 @@
         "max_output_tokens": 16384,
         "cost": {
           "input_per_million": "0.65000000",
-          "output_per_million": "0.75000000"
+          "output_per_million": "0.75000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1550,7 +1593,8 @@
         "cost": {
           "input_per_million": "0.2000000",
           "output_per_million": "1.15000000",
-          "cache_read_per_million": "0.04000000"
+          "cache_read_per_million": "0.04000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1588,7 +1632,8 @@
         "cost": {
           "input_per_million": "0.834000000",
           "output_per_million": "2.501000000",
-          "cache_read_per_million": "0.042000000"
+          "cache_read_per_million": "0.042000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1625,7 +1670,8 @@
         "cost": {
           "input_per_million": "0.3000000",
           "output_per_million": "0.5000000",
-          "cache_read_per_million": "0.15000000"
+          "cache_read_per_million": "0.15000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1659,7 +1705,8 @@
         "cost": {
           "input_per_million": "0.45000000",
           "output_per_million": "1.2000000",
-          "cache_read_per_million": "0.1000000"
+          "cache_read_per_million": "0.1000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1696,7 +1743,8 @@
         "cost": {
           "input_per_million": "2.5000000",
           "output_per_million": "7.5000000",
-          "cache_read_per_million": "0.25000000"
+          "cache_read_per_million": "0.25000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1731,7 +1779,8 @@
         "max_output_tokens": 5529,
         "cost": {
           "input_per_million": "0.35000000",
-          "output_per_million": "0.65000000"
+          "output_per_million": "0.65000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1765,7 +1814,8 @@
         "cost": {
           "input_per_million": "0.09000000",
           "output_per_million": "0.36000000",
-          "cache_read_per_million": "0.018000000"
+          "cache_read_per_million": "0.018000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1801,7 +1851,8 @@
         "max_output_tokens": 8192,
         "cost": {
           "input_per_million": "0.6000000",
-          "output_per_million": "6.000000"
+          "output_per_million": "6.000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming"
@@ -1834,7 +1885,8 @@
         "cost": {
           "input_per_million": "2.000000",
           "output_per_million": "6.000000",
-          "cache_read_per_million": "0.5000000"
+          "cache_read_per_million": "0.5000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1872,7 +1924,8 @@
         "cost": {
           "input_per_million": "0.435000000",
           "output_per_million": "0.87000000",
-          "cache_read_per_million": "0.0036000000"
+          "cache_read_per_million": "0.0036000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
@@ -1909,7 +1962,8 @@
         "cost": {
           "input_per_million": "0.09000000",
           "output_per_million": "0.3000000",
-          "cache_read_per_million": "0.018000000"
+          "cache_read_per_million": "0.018000000",
+          "currency": "USD"
         },
         "capabilities": [
           "streaming",
