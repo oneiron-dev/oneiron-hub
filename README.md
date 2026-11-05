@@ -30,7 +30,7 @@ A pulled folder goes on [removed.json](removed.json) by name and content hash, a
 
 The first folders are manifests for the seat packs (`packs/claude-seat`, `packs/codex-seat`) and the skill that guides a person through connecting one (`skills/connect-a-seat`). They become installable when the engine's seat row and headless seat adapter ship.
 
-`skills/team-shape` teaches the planner how to organise agents for a spawn, seeded from the cooperation research. It carries the engine's runtime task-type tree at `task-type-tree.json` and plain-language seed definitions under `references/`.
+`skills/team-shape` teaches the planner how to organise agents for a spawn, seeded from the cooperation research. It carries the engine's runtime task-type tree at `task-type-tree.json` and plain-language seed definitions under `references/`. It goes live with the engine's planner ladder.
 
 `skills/team-lead` runs a project's leader workflow over its existing task promise and coordination choices. `skills/project-proposal` drafts the project card after the stored project question is answered yes. These are workflow skills; they do not create task authority or confirm projects for the person. A vault uses them after the matching engine pin, import and normal admission.
 
