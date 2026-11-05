@@ -1,15 +1,16 @@
 ---
 name: team-shape
 description: Decide how to organise the work behind a spawn. Solo or a team, which pattern, how wide, which models, at what effort, within the budget. The planner ladder reads this skill at every spawn.
-version: 0.1.0
+version: 0.1.1
 license: Apache-2.0
+role: workflow
 metadata:
   author: oneiron-dev
   contact: contact@oneiron.dev
   kind: workflow
   requires: the engine's planner ladder, payoff table and task-type tree (ONEIRON-ARCH-0079)
   seeded-from: RESEARCH-0366, agent coordination evidence (79 sources)
-  data: references/type-tree.json
+  data: task-type-tree.json
 ---
 
 # Team shape
@@ -109,7 +110,9 @@ Write one line on why. Give the `typeRef` (node id and tree version), the row yo
 
 ## The tree
 
-`references/type-tree.json` holds the seed tree. The Dreamer keeps it:
+`task-type-tree.json` holds the engine's seeded runtime tree.
+`references/type-tree.json` keeps the plain-language seed definitions. The Dreamer
+keeps the runtime tree:
 
 - A type splits when its tasks disagree on a decision read from the tree: the winning pattern, the winning model, critic trust. Never split on topic.
 - Siblings that agree merge back.

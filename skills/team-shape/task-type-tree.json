@@ -1,0 +1,78 @@
+{
+  "nodes": {
+    "build": {
+      "held_out_runs": 0,
+      "held_out_wins": 0,
+      "name": "build",
+      "node_id": "build",
+      "parent": "root",
+      "receipt_count": 0,
+      "seed": "build"
+    },
+    "generate": {
+      "held_out_runs": 0,
+      "held_out_wins": 0,
+      "name": "generate",
+      "node_id": "generate",
+      "parent": "root",
+      "receipt_count": 0,
+      "seed": "generate"
+    },
+    "judge": {
+      "held_out_runs": 0,
+      "held_out_wins": 0,
+      "name": "judge",
+      "node_id": "judge",
+      "parent": "root",
+      "receipt_count": 0,
+      "seed": "judge"
+    },
+    "negotiate": {
+      "held_out_runs": 0,
+      "held_out_wins": 0,
+      "name": "negotiate",
+      "node_id": "negotiate",
+      "parent": "root",
+      "receipt_count": 0,
+      "seed": "negotiate"
+    },
+    "refine": {
+      "held_out_runs": 0,
+      "held_out_wins": 0,
+      "name": "refine",
+      "node_id": "refine",
+      "parent": "root",
+      "receipt_count": 0,
+      "seed": "refine"
+    },
+    "research": {
+      "held_out_runs": 0,
+      "held_out_wins": 0,
+      "name": "research",
+      "node_id": "research",
+      "parent": "root",
+      "receipt_count": 0,
+      "seed": "research"
+    },
+    "root": {
+      "held_out_runs": 0,
+      "held_out_wins": 0,
+      "name": "any task",
+      "node_id": "root",
+      "receipt_count": 0
+    },
+    "solve": {
+      "held_out_runs": 0,
+      "held_out_wins": 0,
+      "name": "solve",
+      "node_id": "solve",
+      "parent": "root",
+      "receipt_count": 0,
+      "seed": "solve"
+    }
+  },
+  "scope": {
+    "kind": "vault"
+  },
+  "version": 1
+}
