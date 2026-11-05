@@ -1,0 +1,8 @@
+{
+  "pattern": "rotation",
+  "default_axis": "diverge",
+  "works_well_for": "reframing, negotiation, open questions",
+  "works_well_for_types": [
+    "negotiate"
+  ]
+}

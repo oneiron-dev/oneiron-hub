@@ -1,0 +1,6 @@
+{
+  "pattern": "market",
+  "default_axis": "converge",
+  "works_well_for": "checkable work at width: tests, holdouts, a pinned judge",
+  "works_well_for_types": []
+}

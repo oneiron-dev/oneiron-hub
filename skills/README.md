@@ -8,6 +8,8 @@ skills/<name>/
                   Body: the instructions, in plain English.
   scripts/        optional. Small scripts the body names. No network by default.
   references/     optional. Small files the body cites. Source material stays off-repo.
+  pattern.json    optional. Typed coordination-pattern binding: pattern, default_axis,
+                  works_well_for, works_well_for_types. Only pattern skills carry it.
 ```
 
 The format follows the [Agent Skills](https://agentskills.io) convention: a directory is a skill, markdown plus frontmatter, the filename is the slot name. Two folders with the same bytes are one skill.
@@ -17,6 +19,10 @@ Rules:
 - No secrets, no keys, no personal data.
 - No script reaches the network unless the body says so and why.
 - A version bump on every change to any file in the folder.
+
+## Pattern skills
+
+Five skills teach the coordination patterns: `team-ceo-decides`, `team-committee`, `team-vote`, `team-market`, `team-rotation`. Each carries `pattern.json` beside `SKILL.md`. The file names the pattern, its default axis, one `works_well_for` line and the task-type nodes that line names. A vault installs them as ordinary workflow skills. The planner offers them as teams when the engine's hub-pattern import ships.
 
 ## Domain skills
 
