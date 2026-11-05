@@ -1,0 +1,8 @@
+{
+  "pattern": "vote",
+  "default_axis": "converge",
+  "works_well_for": "judging between finished options",
+  "works_well_for_types": [
+    "judge"
+  ]
+}

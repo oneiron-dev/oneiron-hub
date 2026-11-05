@@ -1,0 +1,9 @@
+{
+  "pattern": "committee",
+  "default_axis": "converge",
+  "works_well_for": "researching what exists; refining",
+  "works_well_for_types": [
+    "research",
+    "refine"
+  ]
+}

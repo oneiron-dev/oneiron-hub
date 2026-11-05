@@ -1,0 +1,6 @@
+{
+  "pattern": "ceo_decides",
+  "default_axis": "converge",
+  "works_well_for": "most work; work with independent advice streams",
+  "works_well_for_types": []
+}

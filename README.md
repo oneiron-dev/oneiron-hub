@@ -34,6 +34,8 @@ The first folders are manifests for the seat packs (`packs/claude-seat`, `packs/
 
 `skills/team-lead` runs a project's leader workflow over its existing task promise and coordination choices. `skills/project-proposal` drafts the project card after the stored project question is answered yes. These are workflow skills; they do not create task authority or confirm projects for the person. A vault uses them after the matching engine pin, import and normal admission.
 
+Five pattern skills teach the coordination patterns: `skills/team-ceo-decides`, `skills/team-committee`, `skills/team-vote`, `skills/team-market` and `skills/team-rotation`. Each carries its `pattern.json` binding beside `SKILL.md`. They install as ordinary workflow skills. The planner offers them as teams when the engine's hub-pattern import ships.
+
 `packs/ads` is the first GTM pack: eight skills for channel choice, search and paid-social accounts, creative, synthetic video, organic and launches, copy and measurement, plus dated platform facts. Procedural now; its performance claims and variant bandit are engine work under OF-376.
 
 `skills/tune-oneiron-retrieval` is what the slow retrieval loop reads at sleep: the knobs, how to read the retrieval receipts, how to judge a change on held-out runs, and what it must never touch. Its `NOTES.md` lists the engine work it waits on.
