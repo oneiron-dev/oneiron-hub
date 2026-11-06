@@ -25,7 +25,8 @@ Every goal, milestone, task, habit and check-in is a TASK. Its role says what it
 | `habit_checkin` | `vault.habits.checkin` | see the `habit-checkins` skill |
 
 - `vault.productivity.create` takes exactly `role`, `label` and an optional `parent_ref`. Its role is `goal`, `milestone` or `habit`. The label must not be blank. The row is inert: nothing runs.
-- `tasks.create` makes routed work. The engine routes it from its `assignee`; an absent assignee is the Dreamer lane. `parent_ref` files it under its milestone.
+- `tasks.create` requests routed work. Check its receipt before you treat the task as created. When `effected` is `true`, keep `task_ref` and read `route`. When `effected` is `false` and `approval` is `proposed`, keep `proposal_ref`: no task and no route exist yet, and the proposal waits for approval. Do not create it again because it is absent from the tree.
+- A landed task routes from its `assignee`; an absent assignee is the Dreamer lane. `parent_ref` files the landed task under its milestone.
 - A ref is a short-id ref or a 32-hex id. `vault.productivity.create` answers with the new node's `entity_ref` and `id_hex`. Keep each node's ref for its children.
 - The wire field is `parent_ref` on both doors. Older canon text says `parent_task_ref`; the doors do not take that name.
 
@@ -53,15 +54,15 @@ The engine judges the parent once over the write's final state, in this order: o
 2. Create each milestone with the goal's ref as `parent_ref`.
 3. Create each task with `tasks.create` and its milestone's ref as `parent_ref`.
 4. Create each habit as a root.
-5. Read the tree back to confirm it.
+5. Read the tree back to confirm it. A task whose create answered with a proposal is not in the tree until it is approved.
 
 Ask the person before you write a node they did not ask for. A suggested milestone is a proposal until they say yes.
 
 ## Read a tree
 
-`vault.productivity.tree` takes `{"root_ref": "<ref>", "max_depth": <levels>}`. `max_depth: 0` reads the root alone. The answer lists the root first, then each level by depth. Each node carries `task_ref`, `id_hex`, `parent_ref`, `depth`, `role` and `label`. A habit also carries `current_streak` and `longest_streak`; every other role carries none.
+`vault.productivity.tree` takes `{"root_ref": "<ref>", "max_depth": <levels>}`. `max_depth: 0` reads the root alone. The answer is `{"value": <tree or null>, "narrowing": <scope receipt>}`. When `value` is not null, read `value.nodes`: the root first, then each level by depth. Each node has `task_ref`, `id_hex`, `parent_ref`, `depth`, `role`, `label`, `current_streak` and `longest_streak`. The root's `parent_ref` is null. `label` may be null. The two streak fields are null for every role but `habit`.
 
-The read is scoped to what you may read. If you may not read the root, the answer holds no tree.
+The read is scoped. A child you may not read is left out, with its subtree. `value` is null when the root is withheld, missing or not a productivity TASK. Keep the `narrowing` receipt, and never take a scoped view as proof that a left-out node does not exist.
 
 ## Projects
 

@@ -36,7 +36,7 @@ Call `vault.habits.checkin`:
 
 ## Replays and changes
 
-- The same `id` with the same data and the same clocks is a replay. The engine accepts it and writes nothing new.
+- The same `id`, the same habit, the same data and the same clocks is a replay. The engine accepts it and makes no second check-in. It can still rewrite the edge's metadata and it recounts the streak, so a replay is not a promise of zero writes.
 - The same `id` with changed data or a changed clock fails. A check-in is immutable.
 - To correct a check-in, tell the person what you would change. Do not resend it with new data under the old id.
 
@@ -54,7 +54,7 @@ Never write a streak yourself. Never write a check-in through a generic write. L
 
 ## Read back
 
-Read the habit with `vault.productivity.tree`, its ref as `root_ref` and `max_depth: 1`. The habit node shows the two counters. Each check-in appears below it with the role `habit_checkin`.
+Read the habit with `vault.productivity.tree`, its ref as `root_ref` and `max_depth: 1`. Read the habit node and its two counters from `value.nodes`. Each check-in you may read appears below it with the role `habit_checkin`; a withheld one is left out. Keep the answer's `narrowing` receipt.
 
 ## Trials and drops
 

@@ -27,7 +27,7 @@ A habit and a check-in are not new entity types. They are TASKs with a different
 
 ## The tree
 
-A child names its parent at birth with `parent_ref`. The engine writes the ChildOf edge and judges it in the same write. Three pairs are legal:
+`vault.productivity.create` and `tasks.create` name an optional parent at birth with `parent_ref`. `vault.habits.checkin` names its habit with `habit_ref`, which it requires. The engine writes the child and its ChildOf edge together and judges the edge in the same write. Three pairs are legal:
 
 - a `goal` holds a `milestone`;
 - a `milestone` holds a `task`;
@@ -67,7 +67,9 @@ The pack is a folder of the first-party hub. Install it through the ordinary imp
 }
 ```
 
-`vault.packs.install` admits the publisher for this hub, fetches the folder at that commit, scans it and installs it. `vault.packs.get` with `{"name": "oneiron.productivity"}` reads the receipt back. The engine's released hub commit is the `skills` pin that `vault.skill_hubs.default.get` returns on an unchanged vault.
+`vault.packs.install` admits the publisher for this hub, fetches the folder at that commit, scans it and installs it. `vault.packs.get` with `{"name": "oneiron.productivity"}` reads the receipt back.
+
+Use a full commit that contains `packs/productivity`. On an unchanged vault, `vault.skill_hubs.default.get` returns the engine's released hub commit as the `skills` pin. That commit holds this folder only on an engine that pins a hub release with this pack; an older engine's pin predates it, and its fetch fails. Canon's label `oneiron-productivity` names this pack; its installed name is `oneiron.productivity`.
 
 ## What it does not do
 
