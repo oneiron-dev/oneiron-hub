@@ -42,6 +42,8 @@ Five pattern skills teach the coordination patterns: `skills/team-ceo-decides`, 
 
 `packs/crm` is the relationship-pipeline pack: nine skills a campaign agent loads at one moment of work (intake, outbound, replies, calls, deliverability, research interviews, lifecycle, accounts, measurement), a voice floor, dated defaults and platform facts, and two presets (consultancy, creator program). Its `PACK.md` names the engine work it waits on.
 
+`packs/productivity` (`oneiron.productivity`) teaches the vault's native productivity model: goals, milestones, tasks and habits as one TASK type with five roles, the checked parent tree, append-only habit check-ins and derived streaks. Two skills (`productivity-tree`, `habit-checkins`) and one vocabulary file. It adds no kind, predicate, grant or code; it installs through `vault.packs.install` at a pinned commit.
+
 `skills/customize-oneiron` is the guide an agent loads to change a vault: the three hub folder contracts, the authoring verbs, lenses, restore defaults and the mount. A check keeps it equal to the contract data. Its `NOTES.md` lists the engine work it waits on.
 
 `skills/weave-digest-settings` is a Coach skill. It reads one owner's weave digest readings and words, and proposes at most one step: a new cadence or a new lead section. The engine decides whether that step applies now or waits for the owner. Without it, the engine's closed-form rule runs.
