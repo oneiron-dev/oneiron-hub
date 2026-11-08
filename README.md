@@ -48,6 +48,8 @@ Five pattern skills teach the coordination patterns: `skills/team-ceo-decides`, 
 
 `skills/weave-digest-settings` is a Coach skill. It reads one owner's weave digest readings and words, and proposes at most one step: a new cadence or a new lead section. The engine decides whether that step applies now or waits for the owner. Without it, the engine's closed-form rule runs.
 
+`skills/write-a-watcher` teaches an agent to write a watcher: a TASK with a due time, plus a hook on its `schedule.tick` or on a connector's `surface.inbound` events, which returns nothing or enqueues the next TASK. Its "Limits today" section names what the engine does not do yet.
+
 ## Checks
 
 ```
