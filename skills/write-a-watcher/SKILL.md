@@ -1,13 +1,13 @@
 ---
 name: write-a-watcher
 description: "Write a watcher: a TASK with a due time, plus a hook that runs when that TASK falls due or when a connector event arrives, and returns nothing or enqueues the next TASK. Load it when the owner asks you to check something later, to check it again on a schedule, or to act when a message arrives on a connector."
-version: 1.0.0
+version: 1.1.0
 license: Apache-2.0
 metadata:
   author: oneiron-dev
   contact: contact@oneiron.dev
-  requires: tasks.create with due_at (FIX 685, FIX 4749), the schedule.tick and surface.inbound hook sources (ONEIRON-ARCH-0080 §4 Watchers), and vault.packs.put from an agent handle (ONEIRON-ARCH-0080 §7)
-  checked-against: oneiron origin/main 6901f1903, 2026-11-08
+  requires: tasks.create with due_at and watch (FIX 685, FIX 4749, FIX 22121), the schedule.tick and surface.inbound hook sources (ONEIRON-ARCH-0080 §4 Watchers), and vault.packs.put from an agent handle (ONEIRON-ARCH-0080 §7)
+  checked-against: oneiron PR #6784 (watch TASKs) on origin/main 663acfa22e, 2026-11-08
   seeded-from: owner ruling 2026-10-19 (ONEIRON-ARCH-0080 §4 Watchers, ONEIRON-ARCH-0053 watcher skill)
 ---
 
@@ -35,16 +35,17 @@ Read "Limits today" before you promise the owner anything.
 
 ## Part 1: the TASK and its due time
 
-Create the TASK with `tasks.create` and set `due_at` to a Unix time in seconds.
+Create the TASK with `tasks.create`. Set `due_at` to a Unix time in seconds, and set `watch: true`.
 
 - Use the brief-less create: leave out `intent_key` and `brief`. Today a briefed create that carries a due time is refused.
-- The create makes a standard TASK, and a standard TASK with a due time ticks.
+- `watch: true` makes a watch TASK. It queues no work of its own: the hooks on its tick do its work, and its tick settles it Done.
+- Leave out `assignee`, or name the Dreamer. A watch TASK with any other assignee is refused, and so is `watch` without `due_at`.
 - The TASK ticks once, on the first hook-runner pass after its due time has passed, if it is still open then. A TASK that is done, refused or expired by then never ticks.
 - Leave out `ttl`, or set it later than `due_at`.
 - If your ceiling parks the create as a proposal, nothing ticks until the owner approves it.
 - Keep the TASK id from the receipt (`task_ref`).
 
-The due time is shown on the TASK's card. It does not delay the TASK's work. See "Limits today".
+The due time is shown on the TASK's card. Without `watch`, a TASK with a due time still gets its work at once and can settle before it ticks; see "Limits today".
 
 ## Part 2: the hook
 
@@ -123,7 +124,7 @@ What the body may read, under the hook's own grant:
 What the body returns, exactly one:
 
 - `{kind: "nothing"}`: there is nothing new. Only the run's receipt is written. This is the owner's "Skip".
-- `{kind: "enqueue", task: {title, body, assignee, due_at}}`: the next TASK. `title` is 1 to 256 bytes. `body` is at most 16 KiB. `assignee` is optional: the 32-hex id of an agent definition or of a person. Without it, the TASK goes to the Dreamer. `due_at` is optional. With it, the new TASK is a watcher too.
+- `{kind: "enqueue", task: {title, body, assignee, due_at, watch}}`: the next TASK. `title` is 1 to 256 bytes. `body` is at most 16 KiB. `assignee` is optional: the 32-hex id of an agent definition or of a person. Without it, the TASK goes to the Dreamer. `due_at` is optional. To keep watching, set `due_at` and `watch: true` and leave out `assignee`: the new TASK is a watch TASK too.
 
 The enqueued TASK lands through the same brief-less `tasks.create`, as you, with source Generated, at your ceiling. If the owner turns the hook, or every hook, off before the outcome applies, the outcome is refused.
 
@@ -217,6 +218,7 @@ return {
     title: "Acme invoice watch",
     body: "Watcher TASK. The invoice-watch hook checks the invoice when this TASK falls due.",
     due_at: next,
+    watch: true,
   },
 };
 ```
@@ -234,7 +236,8 @@ Call `tasks.create`:
     "description": "Watcher TASK. The invoice-watch hook checks the invoice when this TASK falls due."
   },
   "label": "Acme invoice watch",
-  "due_at": 1794207617
+  "due_at": 1794207617,
+  "watch": true
 }
 ```
 
@@ -255,7 +258,8 @@ Say what is checked, when, and what lands when it finds something. Name the limi
 
 ## Limits today
 
-- **The TASK must still be open when it falls due.** `due_at` does not hold the TASK back. The create queues the TASK's work at once. A TASK with no assignee goes to the Dreamer, which answers it with one model step and marks it Done. A TASK for an agent definition starts that agent now. If the TASK settles before its due time, it never ticks, and the watch stops there. A TASK for a person starts no work and stays open until that person settles it, but the create is refused unless the vault can already reach that person on one of its channels. On a host that lends the Dreamer no model, the Dreamer's TASK waits and stays open. Tell the owner about this limit before the owner relies on a watcher. Check each TASK you create with `describe`.
+- **Use `watch: true`.** Without it, `due_at` does not hold the TASK back: the create queues the TASK's work at once, the Dreamer answers it and marks it Done, and a TASK that settles before its due time never ticks. A watch TASK queues no work and stays open until its tick.
+- **A watch TASK ticks only where a hook takes `schedule.tick`.** Its tick is released on the vault's home, on a hook-runner pass where an enabled hook's selector takes `schedule.tick`. With none, it stays open past its due time until one is bound. Its tick settles it Done whether or not a hook takes that TASK, and a hook bound after the tick never sees it. Check each TASK you create with `describe`.
 - **The body cannot read a TASK.** It sees only the TASK id and the due time; `oneiron.read` reads claims. A hook on the bare `schedule.tick` runs for every due TASK its grant shows. Test the due second, as the example does.
 - **One outcome per run.** A run either renews the watch or hands news on, never both.
 - **Lineage checks.** A hook that runs again inside its own chain raises a `cycle` check. A run whose chain already holds 8 runs raises a `depth` check. Neither stops the run.
