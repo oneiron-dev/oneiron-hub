@@ -58,12 +58,7 @@ bun run check
 
 This runs `scripts/check-customize-contracts.ts` and its tests. The check fails when `skills/customize-oneiron` names a hub kind, a field, a folder part or a verb that the contract data and canon do not carry, or leaves one out.
 
-The contract data lives in oneiron-docs, which is private. `scripts/contracts/hub-folder-contracts.json` is a generated snapshot of it, with the docs commit and a hash. Never edit it by hand. With an oneiron-docs checkout:
-
-```
-bun scripts/check-customize-contracts.ts --docs <oneiron-docs>           # also fails if the snapshot drifted
-bun scripts/check-customize-contracts.ts --docs <oneiron-docs> --write   # regenerate it, then fix the skill until the check passes
-```
+The check reads the contract data from `scripts/contracts/hub-folder-contracts.json`, a generated snapshot with its source commit and a hash. Do not edit it by hand. The maintainers regenerate it.
 
 ## License
 
